@@ -1,0 +1,100 @@
+---
+layout: post
+title: Code Style is Like Grammar
+---
+
+have You ever read an english essay so riddled with errors its tough to read.
+i'm not talking your normal run of the mill errors; I'm talking about
+really systematic misunderstanding of how to use punctation!
+
+If so, and you're reading this blog, then it probably evokes the same 
+emotions as seeing code that looks something like this.
+
+	public int foo_barnicate (int foo, float bar ){
+		if (  foo >= 0  ) 
+			int baz = bar+foo;
+		
+		return baz;
+	}
+
+	public String barFoonicate(String herp)
+	{
+		if(herp.isEmpty()) herp+= " derp";
+
+		return herp;
+	}
+
+In addition to inspiring blood boiling rage, hopefully both of these
+examples imposed the same type of cognitive tax on you.  You probably found
+yourself struggling just a little bit to place commas in their proper place,
+relocate brackets, and make sure that all the whitespace was properly aligned.
+In short, you were spending energy trying to impose consistency between your
+mental model of what the text should look like, and what it did look like.
+
+We normally don't think about this idea of consistency when dealing with English.
+Instead, we think about "English grammar", which are really just a set of
+rules that English speakers agree on about what makes a proper
+sentence. This agreement is super helpful, because it means that everyone who is
+writing or reading English has the same mental model of what the text should
+look like.  Whenever a writer writes English, he or she only needs to follow
+these rules and anyone who reads English will be able to quickly understand the
+structure of the text, allowing readers to focus most of their energy on
+understanding the text's content.
+
+Unfortunately, the programming gods have not been so kind to software
+developers.  Rather of having a well defined set of conventions for punctuation
+and structure, our languages have structural conventions ranging from the
+whitespace enforcement of Python to many languages' atitude of "format however
+you want, I don't care".  Many developers have realized this lack of standards
+leads to readability problems, so they set out to fix it by creating style
+guides like PSR and PEP-8, and even going so far as to create a language with a
+built-in formatter (in the case of Go).
+
+All of these tools have been boons for developers who want to read and write
+consistent code, but they don't solve the fact that developers can ignore every
+possible guideline and still write correct code.  This creates a problem, as it
+means that every block of code presents the author with a new opportunity to use
+a new style and break the reader's mental model of how the code should look.
+When this happens, and code switches between styles at will, programmers reading
+code don't have the luxury of being able to focus on the substance of the code
+that they're reading. Instead, they first need to waste energy mentally
+reshaping the code to a consistent image of how it should look, and only then can they
+start worrying about understanding its content.  What's more, if the
+inconsistency continues into naming conventions, programmers extending code need
+they will need to waste even more time hunting down whether they need to call
+fooBarnicate(), foo_barnicate(), or foobarnicate().
+
+The thing is, avoiding problems like these isn't all that hard, it just requires
+getting into the habit of writing consistent code. Once you have internalized
+the idea that consistency is important, all you need to do in order to edit any
+file is find out "how does this file format {insert code feature here}", and
+then write their own code in the same manner.  No style guide needed!.  
+
+Sadly though, if Rutgers is any indication, consistency is simply not part of a
+CS education; code readability is only covered by briefly mentioning the
+importance of variable naming and comments.  From there, code quality is ignored
+until jumping to OO-Design, where high level documentation is also briefly
+touched on.
+
+While these concepts are definitely important, it's a little bit like teaching
+students vocabulary, saying "hey spelling and punctuation exist" and then
+jumping to how to write a full essay.  Sure, you've given them all the tools to
+write down their ideas in a well structured essay, but chances are it will give
+any English teacher a heart attack.  Similarly, understanding programming
+without a mind for consistency leads to people creating code that may be
+conceptually well structured, but it is unecessarily difficult to read.
+
+This type of code is fine in a classroom environment, where it can be written
+and thrown away after 48 hours. However, in a team environment, code doesn't
+just get thrown away, it needs to stay around and be maintained for a (sometimes
+long) period of time.  What this means is that over time, the amount of code
+that exists will start to build up, and re-writing it to fit one consistent
+style will start to take more effort, until it becomes impossible without
+automated tools.  If you don't enforce a constistent code style from the
+start, when the time comes to do maintence, anyone reading your code will
+first need to spend extra time just wrapping their head around how it looks
+before actually implementing new features. 
+
+So do your future maintainers a favor, and take a couple seconds to minimize
+code inconsistency while you write.  Who knows, your future maintainer could
+just be you. 
