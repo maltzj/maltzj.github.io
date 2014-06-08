@@ -1,0 +1,88 @@
+-w flag
+
+Ever found yourself looking at a git diff and seen hundreds of lines of changes
+which were only whitespace?  Did your team's recent switch from tabs to spaces
+make git blame useless?  If so, it's -w flag to the rescue!
+
+When using git blame, git show, or git diff (and possibly more), the -w flag
+will ignore whitespace changes, making it easy to find the proper person to yell
+at for the bug they introduced.
+
+log -G
+
+Sometimes you find yourself looking at a file that seems to have undergone all
+sorts of wacky transormations such that just using git blame doesn't tell the
+full story. What you really need is a full history of that file so you can trace
+the commits.  In these cases, git log -G is what you're looking for.
+
+This command will look through all of the diffs of your commits, and only return
+those that have a particular string in them.  You can use this to look for
+particular symbols that were modified, or you can just look for file names, as
+those are also included in diffs.  Searching for file names is especially cool because
+you don't need to put the fully qualified path of the file you want, since the
+base name of the file will show up in the diff and be matched.
+
+There are also more tools to look through your commit history which give you
+more fine-grained control over how you search.  These two flags are -S and
+--grep, and the difference between these are summed up nicely in <a
+href="http://stackoverflow.com/questions/1337320/how-to-grep-git-commits-for-a-certain-word/1340245#1340245">this
+StackOverflow comment</a>
+
+Configuring /etc/hosts for maximum productivity
+
+If you've done any web development, you're definitely used to configuring
+virtual hosts by editing your /etc/hosts file.  Over the past couple of months
+I've started using it for an additional purpose: keeping myself focused.  In
+addition to all of my virtual hosts, I have also re-routed Twitter, Facebook,
+and Reddit all to localhost.
+
+Before doing this I'd often find myself checking Reddit "just for a minute" and
+find myself 30 minutes later looking at a bunch of photos I don't care about.
+Now, in order to get my daily dose of /r/androiddev I need to take a couple of
+concious steps in order to log on.  It isn't much if I really need to get on,
+but it's enough friction that I don't feel like going through the hassle just to
+check my Twitter feed.
+
+Also, props to Gerard O'Neill, who initially introduced my to this idea when he
+blocked Tetris Friends during finals season.
+
+Pycharm Remote Debugging
+
+Over at Yelp, all of our API development is done on remote machines; this
+creates a number of problems, one of the biggest being "how the hell do you
+debug stuff?"  Printing stuff is one option, but sometimes you need something
+more powerful, and that's where Pycharm remote debugging comes in.
+
+With remote debugging I can insert a couple of lines of code into any file, drop
+in a breakpoint, and then run my code as normal.  Whenever my breakpoint gets
+hit, the remote code will connect to my local Pycharm instance, and connect to
+the debugger as if the code was running locally.  
+
+I can then use all of Pycharm's debugging features to inspect the applications
+state, step through the application, and generally do insanely powerful
+debugging.
+
+IntelliJ Live Templates
+
+No matter what language you're writing, there's always boilerplate that you find
+yourself constantly writing.  IntelliJ live templates are actually the end of
+this.  With live templates, you cobble together a bunch of code that you are
+continually writing (e.g. the 3-line boilerplate which sets up Pycharm remote
+debugging) and assign it to a shorthand notation.
+
+Next, when you want to drop that particular code block somewhere, you can call
+up your list of live templates, start typing out your template's assigned name
+(which will start narrowing down the list of templates just like when you
+autocomplete code), hit enter, and then drop your boilerplate wherever you
+please.
+
+But wait! In case adding 5-lines of code with 4 keystrokes wasn't enough, you
+can also customize live templates so that parts of them are variable.  This is
+incredibly useful if you often write something like Log.e(TAG,
+"random_Debug_Statement").
+
+By using live templates, you can assign that whole statement to one live
+template, called LE.  Then, when you insert the LE template, your cursor will be
+put right in the quotes where you'd write your debug statement.  You can also go
+crazy and insert a number of variables and just use the tab command to insert
+text where it varies.
