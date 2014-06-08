@@ -1,4 +1,17 @@
--w flag
+Every developer has their own little kit of productivity tools  which they
+constantly expand over time.  Unfortunately, I've found that the only way these
+tools get shared is when someone has a problem someone else pipes up "Hey, I
+know how to do that!", and passes on their tribal knowledge.  I want to
+hopefully short circuit that process by sharing some tools that have been making
+my life better over the past couple of months in hopes that they'll make your
+life better as well.
+
+Before getting started, I deliberately haven't gone into the nitty gritty of how
+this stuff works/is configured.  Once you know what you're looking for googling
+for the details is pretty easy, it's just discovering these tools that's a bit
+of a challenge.
+
+Git's -w flag
 
 Ever found yourself looking at a git diff and seen hundreds of lines of changes
 which were only whitespace?  Did your team's recent switch from tabs to spaces
@@ -8,7 +21,7 @@ When using git blame, git show, or git diff (and possibly more), the -w flag
 will ignore whitespace changes, making it easy to find the proper person to yell
 at for the bug they introduced.
 
-log -G
+Git log -G
 
 Sometimes you find yourself looking at a file that seems to have undergone all
 sorts of wacky transormations such that just using git blame doesn't tell the
@@ -86,3 +99,10 @@ template, called LE.  Then, when you insert the LE template, your cursor will be
 put right in the quotes where you'd write your debug statement.  You can also go
 crazy and insert a number of variables and just use the tab command to insert
 text where it varies.
+
+So yeah, that's some awesome stuff that I've been using for the past couple of
+months.  More than anything else, the one thing that's been impressed on me is how
+awesome the IntelliJ family of editors are.  They are crazy configurable, have a
+beautiful, and they even can be configured to use Vim keybindings in case you
+just can't let Vim go.  Even if you're a diehard vim user, it's worth your time to
+give IntelliJ's IDEs a shot.
