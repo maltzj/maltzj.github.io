@@ -1,0 +1,114 @@
+﻿---
+layout: post
+title: Some Tricks To Make You More Productive 
+---
+
+<p>Every developer has their own little kit of productivity tools  which they
+constantly expand over time.  Unfortunately, I've found that the only way these
+tools get shared is when someone has a problem someone else pipes up "Hey, I
+know how to do that!", and passes on their tribal knowledge, only for it to be
+lost until the next person has the same problem.  In the spirit of "sharing
+stuff I wish I'd known last year", I wanted to share some neat things I've
+discovered over the past couple of months which have helped me solve various
+problems.</p>
+
+<p>Before getting started, I deliberately haven't gone into the nitty gritty of how
+this stuff works/is configured.  Once you know that most of this stuff exists,
+actually configuring it is pretty easy.</p>
+
+<h3>Git's -w flag</h3>
+
+<p>Ever found yourself looking at a git diff and seen hundreds of lines of changes
+which were only whitespace?  Did your team's recent switch from tabs to spaces
+make git blame useless?  If so, it's -w flag to the rescue!</p>
+
+<p>When using git blame, git show, or git diff (and possibly more), the -w flag
+will ignore whitespace changes, making it easy to find the proper person to yell
+at for the bug they introduced.</p>
+
+<h3>Git log -G</h3>
+
+<p>Sometimes you find yourself looking at a file that seems to have undergone all
+sorts of wacky transformations such that just using git blame/show doesn't tell the
+full story. What you really need is a full history of that file so you can trace
+the commits.  In these cases, git log -G is what you're looking for.</p>
+
+<p>This command will look through all of the diffs of your commits, and only return
+those that have a particular string in them.  You can use this to look for
+particular symbols that were modified, or you can just look for file names, as
+those are also included in diffs.  Searching for file names is especially nice
+because you don't need to put the fully qualified path of the file you want,
+just the base name will do.</p>
+
+<p>There are also more tools to look through your commit history which give you
+more fine-grained control over how you search.  These two flags are -S and
+--grep, and the difference between these are summed up nicely in <a
+href="http://stackoverflow.com/questions/1337320/how-to-grep-git-commits-for-a-certain-word/1340245#1340245">this
+StackOverflow comment</a></p>
+
+<h3>Configuring /etc/hosts for maximum productivity</h3>
+
+<p>If you've done any web development, you're definitely used to configuring
+virtual hosts by editing your /etc/hosts file.  Over the past couple of months
+though I've started using it for an additional purpose: keeping myself focused.  In
+addition to all of my virtual hosts, I have also re-routed Twitter, Facebook,
+and Reddit all to localhost.</p>
+
+<p>Before doing this I'd often find myself checking Reddit "just for a minute" and
+then 30 minutes later I'd be way off track, looking at a bunch of mediocre cat
+memes. Now, if I want to get on Reddit or Facebook, I need to take a couple of
+conscious steps to edit my /etc/hosts file and unblock that website.</p>
+
+<p>It isn't too much of a hassle, so I can still easily test stuff like
+Facebook/Twitter sharing, but it's enough friction that I don't find myself
+aimlessly wandering to my twitter feed.</p>
+
+<p><b>Note:</b> this also works really well if you need to study for finals and find
+yourself constantly distracted by Tetris Friends a la Gerard O'Neill.</p>
+
+<h3>Pycharm Remote Debugging</h3>
+
+<p>Over at Yelp, all of our API development is done on remote machines. While this
+solves some infrastructure problems, it also creates some others. One of the
+biggest, especially for API developers is "how the hell do you debug stuff?"  Printing is one option,
+but sometimes you need something more powerful, and that's where Pycharm remote
+debugging comes in.</p>
+
+<p>With remote debugging you can insert a couple of lines of code into any file, drop
+in a breakpoint, and then run my code as normal.  Whenever that breakpoint gets
+hit, the remote code will connect to my local Pycharm instance, and connect to
+the debugger as if the code was running locally.</p>
+
+<p>Once connected, you can debug the code as if it were running locally.  You can
+step into method calls, examine program state, and drop in further breakpoints
+just as if your code were running locally.  If you're used to visual debuggers
+from other IDEs this is truly a god-send.</p>
+
+<h3>IntelliJ Live Templates</h3>
+
+<p>No matter what language you write in, there are always code blocks that you find
+yourself continually writing.  IntelliJ live templates are the end of this.
+With live templates, you cobble together a bunch of code that you are
+continually writing (e.g. the 3-line code block which sets up Pycharm remote
+debugging) and assign it to a shorthand notation.</p>
+
+<p>Next, when you want to drop that particular code block somewhere, you can call
+up your list of live templates, start typing out your template's assigned name
+and then get it completed as if it were just another function name.</p>
+
+<p>But wait! In case adding 5-lines of code with 4 keystrokes wasn't enough, you
+can also customize live templates so that parts of them are variable.  This is
+incredibly useful if you often write something like Log.e(TAG,
+"random_debug_statement").</p>
+
+<p>By using live templates, you can assign that whole statement to one live
+template, called LE.  Then, when you insert the LE template, your cursor will be
+put right in the quotes where you'd write your debug statement. You can also go
+crazy and have live templates with multiple variables and just tab through to
+insert text where appropriate.  You have never felt like such a master of your
+code.</p>
+
+<p>Those are all the neat little tricks I've picked up for now. Over the next
+couple of weeks I'll (finally) be digging into Android Studio and Espresso for
+HN, so hopefully that will lead to all sorts of productivity goodness in the
+wake of Google I/O.</p> 
