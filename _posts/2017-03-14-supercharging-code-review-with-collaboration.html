@@ -1,0 +1,125 @@
+---
+layout: post
+title: Supercharging your Code Review With Collaboration
+---
+
+<p>Software engineers always talk about how code reviews are <a
+    href="https://blog.codinghorror.com/code-reviews-just-do-it/">the single biggest
+thing to improve your code quality</a>, but we often forget that putting your
+hard-written code up for review can be scary. We invest a lot of time in making
+sure that our code is perfect, so submitting it to someone for their critique
+can feel like putting part of our identity up for critique.</p>
+<p>Fortunately for you, prospective code reviewer, there’s something you can do
+to help. By being conscious of the language you use when suggesting revisions,
+you can preemptively allay the concerns of your reviewee and supercharge your
+code reviews. Best of all, it only requires tweaking a few phrases in your
+vocabulary.</p>
+<h3>Getting started: Focus your critical feedback on the code, not the people
+    who wrote the code.</h3>
+<p>One of the first keys to building safety as a reviewer is to make it clear
+that any feedback you give is not about the code’s <em>author</em>, but rather a comment
+on the code <em>itself</em>. This can seem complicated, but there’s a dead simple way to
+get started accomplishing this: remove the word “you” from your code review
+vocabulary.</p>
+<p>It’s a little challenging to get started with this new, you-free lifestyle,
+but you’ll find that it pays huge dividends. In fact, once you’re aware of it,
+you’ll find the sneaky three letter word has been cropping up all over the
+place, making situations adversarial when they should feel collaborative. Worst
+of all, chances are, your “you’s” have probably been popping up when they’ve
+actually been referring to the code all along!</p>
+<p>Let’s take a look at a fairly innocuous code review comment:</p>
+<p><em>“You’ve really tightly coupled your classes here. That may cause some
+    problems down the road.”</em></p>
+
+<p>My heart skips a little when I read that, and I’m not even the one who wrote
+the code! By immediately focusing on “you”, this comment can speak right to <a
+    href="http://blog.startupinstitute.com/2016-09-08-overcoming-imposter-syndrome/">the
+    little voice</a> which says “I’m no good because my code is no good”. Once that
+little voice starts to talk, <a
+    href="https://www.vitalsmarts.com/crucialskills/glossary/#q21">conversational
+    safety</a> starts to go out the window,
+and it’s taking collaboration right along with it.</p>
+
+<p>Fortunately, in many cases, if you do a mental find/replace for “you” with
+“the code”, you get something much more collaboration friendly, like:</p>
+<p><em>“This code here looks really tightly coupled. That may cause some problems
+    down the road”</em></p>
+<p>Phew! Look at how much chest-tightness that eliminated. This comment no
+longer references the code review author at all, and instead it only focuses on
+something much more objective: the code itself. Now that we’ve shifted that
+focus, we can employ a couple more techniques to make others receptive to your
+feed back.</p>
+<h3>Next Up: Think of your comments as suggestions, not dictations</h3>
+<p>No one likes to be told what to do, and code review is no exception to this.
+At the same time, one of your responsibilities as a reviewer is to get your
+reviewee’s code to a place that your team is comfortable shipping it, which
+sometimes requires getting them to change things they may feel attached to.</p>
+<p>How to resolve this tension? Try not to make your comments dictations but
+rather suggestions which open up space for discussion. To look at how we can do
+this, let’s continue with our well-intentioned feedback from above, but this
+time with a slight modification.</p>
+<p><em>“The code here looks really tightly coupled. It should be refactored into
+    class A and Class B”</em></p>
+<p>This statement scores high marks for focusing on the code, but it could use
+some improvement in the collaboration department by dictating the solution to a
+problem. This comment may be correct, but it pushes the discussion into a realm
+where it may seem like you’re forced to make <a
+    href="https://www.vitalsmarts.com/crucialskills/glossary/#q27">the fool’s
+    choice</a>. If the only
+options presented are “keep the code as it stands” or “take your reviewer’s
+suggestion” then there’s not an obvious space to agree with the premise (tight
+coupling) but propose a new solution.</p>
+<p>Much like our safety-building find/replace, the way to avoid this trap is
+fairly simple: rephrase your suggestion from a dictation to a question about a
+particular direction. Applying that transformation to our above comment, we get
+a comment that looks like:</p>
+<p><em>“The code here looks really tightly coupled. What if it got refactored it
+    into class A and class B?”</em></p>
+<p>Holy moly! What a difference three words and a punctuation change makes!
+Instantly upon reading this question, you probably started trying to answer this
+question in your head, and we don’t even have anything real to refactor! Just
+imagine if we were talking about a real code review!</p>
+<p>Maybe the end result of this is that you move in the suggested direction,
+maybe you don’t do anything, or maybe you find some third path that makes
+everyone satisfied. Regardless of the direction, what was once a code review
+commandment is now a full-blown code review collaboration.</p>
+<p>But we’re not done yet, there’s still a final form that our code review can
+evolve into, and all we need to do to make that happen is use one simple
+word.</p>
+<h3>Look for places to use “we” instead of “you”</h3>
+<p>We talked above about how and why to avoid using “you” in code reviews, but
+really we only suggested one possible other direction: talking about the code
+directly. What’s a code reviewer to do when they actually need to refer to a
+person then? In those cases, save yourself a character and swap your “you”s for
+“we”</p>
+<p>This matters because we live in a world of <a
+    href="http://www.extremeprogramming.org/rules/collective.html">collective
+    code ownership</a>, which means that any code that your teammate puts into
+production immediately becomes everyone’s responsibility. If a change breaks at
+2 AM, Pagerduty isn’t going to take the time to git blame the offending line;
+it’s going to wake someone up, and that someone may be you.</p>
+<p>This means that code review isn’t just a time to make sure that the code is
+the best it can be. It’s a time to also make sure that it’s code that the whole
+team is comfortable owning and maintaining. By using “we” in your code reviews,
+it reminds everyone involved that the goal is creating a great end product for
+the team. Plus, it’s super simple!</p>
+<p>We can take our previous comment:</p>
+<p><em>“The code here looks really tightly coupled. What if it got refactored it
+    into class A and class B?”</em></p>
+<p>And wordsmith it into</p>
+<p><em>“The code here looks tightly coupled, which may come back and bite us
+    down the line when we want to make changes. What if we refactor it now into
+    class A and class B?”.</em></p>
+<p>Wham! Not only have we given a rationale for why we’re suggesting a
+particular change, but also we’ve communicated it in such a way that it’s clear
+that both the author and reviewer feel like they’re on the same side. Both
+parties want flexible, maintainable code, and this comment sets the two of them
+up to work towards that goal together, rather than as adversaries.</p>
+<p>With those three small changes: removing the word “you”, focusing on the
+code, using “we”, and phrasing suggestions as questions, our code review
+toolbelt has received a serious level-up. These new tools won’t immediately
+change how your code review operates, but with continued application you’ll find
+that an activity which was once an unproductive chore will turn into a valuable
+opportunity to work with your team to help ship the best possible software.</p>
+<p>That’s not a bad outcome for shuffling around a couple of words and changing
+a punctuation mark.</p>
