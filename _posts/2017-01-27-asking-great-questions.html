@@ -1,0 +1,189 @@
+---
+layout: post
+title: Asking Great Questions on the Internet
+---
+
+<p>We’ve all been there before: you’re chugging away on a technical problem and
+suddenly you hit a brick wall you just can’t seem to get over. You’ve turned
+down every imaginable path, but still you’re getting behavior that seems like it
+was created by some sort of deity just to spite you. Fortunately, there is hope!
+Many projects, both enterprise and open source, maintain chat channels and
+mailing lists that you can use to ask questions to get yourself unstuck on your
+current problem.</p>
+
+<p>However, asking good questions is hard. You need to take everything you’ve
+tried and learned, word it in such a way that someone else can understand it,
+and then finally figure out what you actually need to ask to get a helpful
+answer. Doing all of this effortlessly requires not just communication skills,
+but also serious empathy skills.</p>
+
+<p>What’s a good engineer to do here? Building up your communication and empathy
+muscles can take a long time, and chances are you need answers to your questions
+right. One option is to follow a fairly simple process I teach all my mentees in
+order to jumpstart their own question asking skills.</p>
+<p>The process starts by doing your own research, transitions into defining your
+problem appropriately, then sharing what you’ve already tried, and finally
+actually asking a question. I’ve found that by following these four steps,
+anyone can ask an informed question which puts them on the path to solving their
+problems.</p>
+
+<p>So what are the specifics? Let’s jump into the details.</p>
+
+<h3>Step 0: Do your own research</h3>
+
+<p>Collaboration with other engineers is a great tool to help get you unblocked,
+but remember that others have their own work they want to get done. Because of
+this, you want to make sure that you’re valuing their time by doing your best to
+solve your own issues before enlisting the help of others.</p>
+
+<p>Before you go out into the vast wilds of the internet to ask questions, make
+sure that you’ve read through the relevant documentation, googled for your
+question, and checked StackOverflow to see if anyone on the internet has already
+solved your problem.</p>
+<p>Once you start going down the research rabbit hole, you may be nagged by the
+question of “how do I know when I’ve done ‘enough research’”? To that end, I
+like to follow the mantra of “You must try, then you must ask”, which states
+that after you feel like you’ve hit a dead-end on a problem, you need to set a
+timer, work on it for 15 more minutes, and then go ask for help.</p>
+
+<p>Once you’ve done you’ve tried and have not found a solution to your problem,
+it’s time to go ask for help!</p>
+
+<h3>Step 1: Describe what you’re looking to accomplish.</h3>
+
+<p>The first step of asking a great question on IRC is actually not to ask any
+question at all (very zen); the first step is to describe the problem you’re
+trying to solve. You may be in a rush to get an answer to your specific
+question, but remember, the person you’re asking has NO IDEA about the ultimate
+goal you’re trying to accomplish.</p>
+
+<p>This can be the cause of a whole mess of frustration. If you just jump into a
+channel and ask “How do I fix my failing Foobarnicator?”, someone’s first
+response may be “Foobarnicators are so 2014, Baznicators are where it’s at now”.
+Then before you know it you’re in a discussion about Foobarnicators vs.
+Baznicators when you know Baznicators don’t solve your particular problem.</p>
+
+<p>In order to avoid this conundrum, you want to give the askee sufficient
+context on the problem you’re trying to solve. “Sufficient Context” can be one
+of those tricky shifting targets to hit: you don’t want to be too specific,
+because then you don’t get to leverage your respondent’s domain knowledge to
+validate your approach. However, you also don’t want to be too general, because
+then your discussion can easily go off the rails.</p>
+
+<p>In general, I’ve found that there’s a goldilocks zone of specificity that
+exists right around describing the human-facing goal that you’re trying to
+achieve. Links to tasks in your bug tracker of choice are a great tool for this
+(I’ll use JIRA just for example’s sake). For example:</p>
+<p><em><b>Too Vague</b>: Hey smart person! I’m looking to make some changes to our Android
+    app.</em></p>
+<p>Is probably too broad of a context to set. Android applications can be 100s
+of thousands of lines of code, so anyone looking to help you is would be
+throwing darts onto a board the size of Texas, hoping to get a bullseye.</p>
+<p><em><b>Too Specific</b>: Hey smart person! I’m looking to debug an error on line 56 on
+    the PaymentActivity of our Android app.</em></p>
+<p>This definitely gives people a much smaller idea of what context they need to
+help you, but it also <a href="https://www.sciencedaily.com/terms/anchoring.htm">anchors</a> them to a specific part of the code. If your
+problem lies elsewhere in the code, both of you will need to take a step back to
+find the actual solution to the problem.</p>
+<p><em><b>Just Right</b>: Hey smart person! I’m trying to add a feature to our
+    application which lets us place orders ${JIRA TICKET}. When I send a request
+    to place an order the app crashes!</em></p>
+<p>This provides less detail than the above description, but it gives the person
+you’re asking a framework for how to think about your problem without
+pigeonholing them into a solution. Chances are they have a general idea of where
+your problem may live, so it’s time to take the next step towards an answer.</p>
+<h3>Step 2: Describe relevant metadata and what you’ve tried so far</h3>
+<p>Once you’ve framed your question properly, the next thing you want to do is help your helper give you the best advice possible. This means not only explaining what you’ve tried so far, but also preemptively answering common questions that come up when people try to solve your particular problem. The pieces of information you should supply roughly break down into three categories:
+<p><b>1. Your investigation so far</b>. Describe the areas of the code you’ve already explored, why those didn’t work out, and any conclusions that you’ve drawn from those failures. As you’re doing this, be sure to include the actual output of these actions. This can include things like:
+<ul>
+    <li>API responses</li>
+    <li>Stacktraces</li>
+    <li>Log lines that have been printed out</li>
+</ul>
+<p>
+<p><b>2. Actions you have taken to try to solve the problem.</b> Have you run a clean build? Cleared your cache? Pulled master? Tried that thing your co-worker sent out in an email yesterday? If not, go do those first.
+<p><b>3. Any relevant metadata about your setup that may be important.</b> The necessary information here can vary wildly depending on what you’re working on but the idea is you want to include details like your OS version and device model.
+<p>If we were to fully contextualize our question above, it would look something like this.
+<p><em>Hey smart person! I’m trying to add a feature to our application which
+    lets us place orders ${JIRA TICKET}. When I send a request to place an order
+    the app crashes with a stracktrace of ${pastebin link}! I’ve found that
+    after pressing the “order” button the application successfully sends a
+    request to the server with that looks like ${pastebin link}, and receives
+    the response ${pastebin link}. I’ve tried logging out and in and restarting
+    the app but that doesn’t change the behavior . I’m also running Android M on
+    a Google Pixel if that matters.</em></p>
+<p>Holy cow! Our simple statement just became an intimidating block of text.
+Even the most diligent assistant will have their eyes glaze over looking at
+that. Eye-glazing is scientifically shown to lead to unhelpful results, so you
+want to break this message up into multiple messages in quick success to make
+the content easier to consume. After a quick trip to the line-break machine the
+previous message becomes something like:</p>
+<em><p>Hey smart person! I’m trying to add a feature to our application which lets
+us place orders ${JIRA TICKET}. When I send a request to place an order the app
+crashes with a stracktrace of ${pastebin link}!</p>
+<p>I’ve found that after pressing the “order” button the application
+successfully sends a request to the server with that looks like ${pastebin
+link}, and receives the response ${pastebin link}.</p>
+<p>I’ve tried logging out and in and restarting the app but that doesn’t change
+the behavior. I’m also running Android M on a Google Pixel if that
+matters.</p></em>
+<p>Oftentimes, you’ll find that completing this step forces you to think through your problem in a whole new way and gets you a solution to without actually needing to ask a question. However, if you’re still stumped it’s time to take on Step 3!
+<h3>Step 3: Ask for help in a way that engages others but doesn’t abdicate
+    responsibility.</h3>
+<p>Once you’ve established the problem you’re trying to solve and what you’ve
+already tried, it’s time to actually ask for help! A good question has three
+criteria:</p>
+<ul>
+    <li><b>Clarity</b>: A good question will not leave any doubt what information
+        you’re looking for from the person you’re asking.</li>
+    <li><b>It actually solves your problem</b>: If you are not able to
+        accomplish your initial goal after getting an answer to your question,
+        then you should head back to the drawing board and ask something that
+        allows you to move forward.</li>
+    <li><b>It keeps you in the drivers’ seat of problem solving</b>: Most people
+        are happy to help, but they don’t want to feel like others’ questions
+        are being dumped on them. You want to ask a question which gets others
+        to help you solve your own problem, not one which gets them to solve
+        your problem for you.</li>
+</ul>
+<p>Fortunately for you, fair question asker, if you followed through on steps 1
+and 2 of this process, you’ll have a pretty clear and actionable question to
+ask. Oftentimes it will be some form of “Any idea where I should look next to
+continue debugging this?” or “Does what I just described sound like a sane
+approach to you?” Both of these are perfectly great questions and allow you to
+push forward with solving your own problem</p>
+
+<p>Putting all this together, our final question ends up looking something
+like:</p>
+<em><p>Hey smart person! I’m trying to add a feature to our application which
+    lets us place orders ${JIRA TICKET}. When I send a request to place an order
+    the app crashes with a stracktrace of ${pastebin link}!</p>
+<p>I’ve found that after pressing the “order” button the application successfully sends a request to the server with that looks like ${pastebin link}, and receives the response ${pastebin link}.
+<p>I’ve tried logging out and in and restarting the app but that doesn’t change
+the behavior. I’m also running Android M on a Google Pixel if that matters.</p>
+<p>I’m kind of at a loss for where to chase this bug next, do you have any
+suggestions for what I should investigate next?</p></em>
+<p>The above question hits all four of the major things you need. First, it
+describes a problem that’s neither too specific nor too general, meaning that
+whoever answers this question will be able to help us without being pigeonholed
+into a possibly incorrect hypothesis. Next, it gave anyone who answers this
+enough information about what you tried so they don’t have to spend time asking
+questions like “have you tried restarting the app?” or “what’s the stack trace?”
+and can focus on really understanding the problem. Lastly, it contains a
+question which keeps you in the driver seat, ensuring that you’re consistently
+collaborating rather than throwing your problems over a fence and hoping they
+get solved.</p>
+<p>After you go through this process a bunch of times, you’ll find that you’ll
+start to see patterns emerge in how others respond to your own questions, which
+in turn allows you to ask better questions. This is GREAT, as it means that all
+of your questions have led to your empathy muscles growing, which over time will
+allow you to ask better questions and become a more well-rounded engineer.</p>
+<p>Of course, this process isn’t fool-proof, so you’ll occasionally find
+yourself getting answers to questions which are different than what you really
+need. When that happens, take a step back and make sure everyone involved
+understands the problem you’re trying to solve and also what’s already been
+explored. If that doesn’t get you where you want to go, fear not! The internet
+is stuffed to the gills with great question asking resources. Specifically, I’m
+a big fan of this post which speaks about some meta-question asking topics and
+also links to some other fantastic resources.</p>
+<p>Happy question asking!</p>
