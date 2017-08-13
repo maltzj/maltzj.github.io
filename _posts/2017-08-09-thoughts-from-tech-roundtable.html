@@ -1,0 +1,103 @@
+---
+layout: post
+title: Discussions on Building Widely Adopted Infrsatructure
+---
+
+<p>Every month, a group of engineers at Yelp get together for something we
+call the "technical roundtable", which is basically a big discussion group on
+technical topics that are challenging the company.  Often, these focus on specific pieces of
+Yelp's technical infrastructure, but our most recent one touched on time
+management for mid-level to senior engineers. A lot of the takeaways were
+initially surprising but obvious in retrospect, so I figured I'd share them with the
+wider internet.</p>
+
+<p>First, one of our engineering managers talked about the concept of <a
+    href="https://crew.co/blog/urgent-vs-important/">important vs. urgent</a>,
+which is a common guiding framework for making sure you don't fall into the
+busyness trap.  He also discussed leveraging your time, which Edmund Lau covers really effectively in his book
+<a
+    href="https://www.amazon.com/Effective-Engineer-Engineering-Disproportionate-Meaningful/dp/0996128107">The
+    Effective Engineer</a>. Both of these are useful frameworks, but you can
+just go read the primary sources to find out more about them.</p>
+
+<p>One interesting concept he touched was the idea of
+giving up responsibilities as a way to foster organizational health.  The basic
+idea is this: over time it's easy to accumulate a bunch of small, disparate
+responsibilities like running learning groups which benefit your team/company but are not central to your
+core job of shipping software.  It can be tempting to keep these
+responsibilities forever, after all, you have the most context on them, and it
+seems like anyone else who picked them up would only do 80% as well.</p>
+
+<p>Our presenter argued that these types of low-leverage activities are exactly the things
+that you should be giving up to more junior engineers to help them grow.  First
+and foremost, it frees up your time, so yu can focus on higher-leverage
+activities for yourself.  Second, it'll be a stretch for them, which means that
+they'll gain new skills and become more productive members of your team.
+Finally, they'll be able to spend more time focused on that task, so it'll
+probably get done better in the long run. He closed with a quote from our old
+SVP who would always ask "can they do it 80% as well as you now?  If so, they'll
+be doing it 120% as well as you in a month", which I felt really succinctly sums
+up the idea.</p>
+
+<p>The second part of the event was a "point/counterpoint" disccussion, where a
+variety of engineers got together to discuss the pros/cons of spending our time
+in various ways.  I got placed into the "writing code" breakout group, where one
+of our infrastructure engineers suggested that it isn't a question of writing
+too much/too little code, but rather writing the right code and reusing
+infrastructure where appropriate.  This became a question of "how do we
+make sure everyone knows about the tools that they can reuse so they don't build
+their own custom solution?"</p>
+
+<p>We discussed the contours of this problem and came up with a few ways to deal
+with it that feel generally applicable:</p>
+
+<ul>
+    <li>
+        If you're trying to build a piece of infrastructure that will be
+        generally useful, you have to understand other engineers'
+        problems/needs.  Very often it's easy to solve our particular version of
+        the problem in a clean, maintainable way, but ignore edge cases that may
+        be important to other developers. This is fine if you just
+        want a one-off solution, but if you want to make some truly reusable
+        systems, it's important to put your PM hat on and understand your users' 
+        (i.e other engineers') needs before implementing a solution.
+    </li>
+    <li>
+        Any piece of infrastructure needs to solve its problem exceptionally
+        well. This is rooted in the idea that it's generally hard to go modify
+        some code you don't have context on rather than building a system from
+        scratch. If an individual
+        developer is confronted with the choice of "go modify someone else's 60%
+        solution that  to make it fit my use case" vs.
+        "Go write a 60% solution which solves my own problems" it may just be
+        quicker to write the whole thing from scratch.  However, if that same system solves
+        95% of her hard problems , it's much more likely that the same developer 
+        will do some up-front work to just use what exists. 
+    </li>
+    <li>
+        Finally, and perhaps most surprisingly, we all agreed that it's
+        important to make sure you have a PR push to make other engineers aware
+        of what you've built. On a small team, this can be as simple as an email + message
+        to your Slack channel saying "hey, did you know about this cool new
+        thing we have", but that probably isn't sufficient when you have a team
+        of engineers getting innundated with emails. Our most successful
+        infrastructure projects have built a critical mass of support by going
+        out and showing other people how it solves their use case, building out
+        features and documentation in the process. In this way, things like our
+        <a
+    href="https://engineeringblog.yelp.com/2016/07/billions-of-messages-a-day-yelps-real-time-data-pipeline.html">Data
+    Pipeline</a> have built a 
+        critical mass of awareness such that the first thing people think of
+        when they're trying to stream data across Yelp.
+    </li>
+</ul>
+
+<p>A lot of these ideas feel really obvious in retrospect, but it's also really
+easy to fall into the trap of producing another 60% solution to that just solves your team's
+version of a problem.  It seems like the best solution we've found as an
+industry is to have infrastructure teams who are incentivized to serve internal
+developers combined with feature teams which use those tools and make a
+judgement call about whether they should build something generally applicable or
+something which just fits their use case. This approach seems to help us get
+along, but doesn't feel perfect, and I'd love to hear if there are any large
+software teams which strike this balance really well.</p>
