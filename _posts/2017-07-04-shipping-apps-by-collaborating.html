@@ -1,0 +1,86 @@
+
+<p>Whenever I hangout with mobile developers at meetups, I hear a bunch of
+misconceptions tossed around, but one of the most pernicious is the belief that
+designers are head-in-the-clouds artists, throwing pixels around without concern
+for what it will mean to implement their creation. On the surface, this
+comparison is apt; both artists and designers create visual artifacts out of
+ink, paper, and pixels. Dig a little deeper into what designers do every day
+though, and you will discover that that <a href="https://medium.com/@raveeshbhalla/lesson-1-design-is-not-art-68c05277bfb2">design is not art</a>. Rather, design is a problem solving discipline which tackles a different, but complementary, set of problems to the ones engineers solve when creating a product. Once engineers internalize this idea of designers as problem solvers and not artists, it opens up a whole new mode of collaboration which allows for otherwise impossible products to be shipped.</p>
+
+<p>Unfortunately, most product and engineering teams operate in a way which
+makes building this type of understanding difficult. Many teams make problem
+definition and ideation solely the realm of designers and product managers with
+engineers only getting involved once a mock-up is mostly finalized.</p>
+<p>In this world, it’s easy to see why engineers see designers as artists and
+not problem solvers. If all an engineer sees is a Sketch file with some
+redlines, it’s easy to be blind to all the work that went into figuring out what
+to put on the design, and instead focus on the pixel massaging necessary to make
+it look good.</p>
+<p>This process failure isn’t a problem in the happy path of product
+development: designers propose solutions which fit easily within the platform
+constraints, and engineers are able to implement them with some light back and
+forth. Unfortunately, very few mock-ups can be implemented on this happy path.
+Maybe the mock-up proposes adding a bunch of custom one-off dimensions to the
+layout, which will make it hard to maintain in the future. Or perhaps there’s an
+animation which seems simple, but would actually take weeks to implement (I’m
+looking at you, keyboard animations on Android). What’s a team to do in this
+case?</p>
+<p>The choice I hear all too frequently is to push-and-pull until one side
+“wins”. Either the design is implemented as-is, regardless of platform standards
+and technical debt incurred, or the feature gets axed as “technically
+infeasible”. This type of thinking is a classic example of <a
+href="http://www.beyondintractability.org/essay/positional-bargaining">positional bargaining</a>, with designers and engineers negotiating against each other about
+what the final product should look like. Both of these miss the point though, as
+what they should really be asking is “what are we trying to solve in the first
+place, and how can we build a solution which gets us there in the best way
+possible?”</p>
+<p>Once the problem has been reframed that way then folks on both sides of the
+table can start to work together to make it a reality. Animations can be
+changed, dimensions tweaked, and platform-specific widgets can be used to
+replace the custom solution that was initially designed. All of these changes
+work together to create a product that solves the same problems for users, but
+can be shipped faster and with more maintainable code.</p>
+<p>This promised land of faster shipping, happier teams, and satisfied users
+sounds great, but getting to this type of collaboration does not happen
+overnight. It requires a large amount of education for both designers and
+developers so that they can understand the impacts of ignoring the others’
+concerns.</p>
+<p>Fortunately, Google has started shouldering some of the burden by doing an
+all-out Material design education push. This has helped designers understand the
+principles behind how to build beautiful Android applications, and it has helped
+engineers understand the types of problems their design teams aim to solve
+day-in and day-out. At the same time, the Material guidelines are just that:
+guidelines; sometimes they will need to be bent, or even broken in order to
+solve a particular problem. In those cases, there is no substitute for engineers
+and designers understanding some core principles of how the other discipline
+works.</p>
+<p>So if you’re an engineer, and you encounter a design which seems like it has
+some unforeseen technical consequences, take time to talk about those challenges
+and the impact they’ll have on your project. And if you’re a designer sharing a
+mock-up, don’t throw some redlines on a sketch file and assume your engineers
+will understand ideas like grouping, and consistency; take time to educate
+engineering teams on the “why’s” of a particular design, including some of the
+fundamental principles they may not even be aware of. You may just be surprised
+at the end result.</p>
+<p><b>Curious of what this looks like in action?</b></p>
+<p>When we redesigned the Yelp Android application in 2014, all the mock-ups
+called for bottom tabs even though the Android design guidelines specifically
+told us not to do it. Our engineers read those design guidelines and expressed
+concerns about the mock-ups the design team, citing concerns about platform. Our
+design team listened to our concerns, explained why we wanted persistent tabs in
+the application, and showed all of the other possible iterations, along with an
+explanation about why something like top tabs (which were standard at the time)
+were insufficient. At the same time, the initial mock-ups called for those tabs
+to stay consistent, but the screen content would still animate. We tried A LOT
+of different ways to make this happen, but short of rewriting the whole app to
+use Fragments (which would’ve been a mammoth undertaking), or doing some janky
+UI tricks on every Activity, we couldn’t figure out how to make this happen. As
+a result, we decided to just remove transitions entirely from our app. We were
+all bummed that we couldn’t get the type of beautiful transitions that we
+initially wanted, but we delivered the most important parts of the design and
+didn’t build a mountain of technical debt.</p>
+
+<p><em>A big thanks goes out to <a href="https://twitter.com/brianika">Briana
+        Como</a> and <a href="https://www.linkedin.com/in/ramya-mallya-a427213a/">Ramya Mallya</a>, both of whom
+    helped tremendously in providing context and editing for the thoughts
+    here.</em></p>

@@ -1,0 +1,94 @@
+---
+layout: post
+title: Discussions on Building Widely Adopted Infrsatructure
+---
+
+<p>Every month, a group of engineers at Yelp! get together for something we
+call the "technical roundtable", which is basically a big discussion group on
+technical topics that are challenging the company.  Often, these focus on specific pieces of
+Yelp's technical infrastructure, but our most recent one touched on time
+management for mid-level to senior engineers. A lot of the takeaways were
+initially surprising but obvious in retrospect, so I figured I'd share them with the
+wider internet.</p>
+
+<p>First, one of our engineering managers talked about the concept of <a
+    href="https://crew.co/blog/urgent-vs-important/">important vs. urgent</a>
+and leveraging your time, which Edmund Lau covers really effectively in his book
+<a
+    href="https://www.amazon.com/Effective-Engineer-Engineering-Disproportionate-Meaningful/dp/0996128107">The
+    Effective Engineer</a>. Both of these are super useful frameworks, but other
+people have written more eloquently than I have about them, so I won't bother
+rehashing the concepts.</p>
+
+<p>One thing that they touched on which was interesting is the idea of
+giving up responsibilities as a way to foster organizational health.  Over time it's
+easy to accumulate a bunch of small, disparate responsibilities like interview
+training and learning group scheduling which are important, but= peripheral to
+the core job of shipping software. It can sometimes feel like more junior
+engineers will only do 80% as well at thse things, but those are some of the
+most important tasks to give up to help more junior engineers grow.  Oftentimes,
+letting someone do one of these tasks 80% as well in the short term will mean it
+gets done 120% as well over the long term, and helps make the whole team strong
+because junior engineers can level up. This reminded me a lot of Molly Graham's concept of <a
+    href="http://firstround.com/review/give-away-your-legos-and-other-commandments-for-scaling-startups/">Giving
+    Away Your Legos</a> and caused me to do a quick activity inventory and start
+actively work on giving away some of my own peripheral activities</p>
+
+<p>The second part of the event was a "point/counterpoint" disccussion, where a
+variety of engineers got together to discuss the pros/cons of spending our time
+in various ways.  I got placed into the "writing code" breakout group, where one
+of our infrastructure engineers suggested that it isn't a question of writing
+too much/too little code, but rather writing the right code, and reusing
+infrastructure where appropriate.  Writing this in hindsight feels kind of
+platitudey, much like "using the right tool for the job", but the question of
+"how do I create systems that are widely usable" starts to become pretty
+challenging in world where 10+ teams are contributing to the same codebase.</p>
+
+<p>We discussed the contours of this problem and came up with a few ways to deal
+with it that feel generally applicable:</p>
+
+<ul>
+    <li>
+        If you're trying to build a piece of infrastructure that will be
+        generally useful, you have to understand other engineers'
+        problems/needs.  Very often it's easy to solve our particular version of
+        the problem in a clean, maintainable way, but ignore edge cases that may
+        be important to other developers.  Ignoring these is fine if you just
+        want a one-off solution, but if you want to make some truly reusable
+        systems, it's important to put your PM hat on and understand your users' 
+        (i.e other engineers') needs before implementing a solution.
+    </li>
+    <li>
+        This system needs to solve its problem exceptionally well.  If an individual
+        developer is confronted with the choice of "go modify someone else's 60%
+        solution that I don't really understand to make it fit my use case" vs.
+        "Go write a 60% solution which solves my own problems" chances are she
+        is just going to write it herself rather than building up enough context
+        on someone else's system to improve it.  However, that same system solves
+        95% of the her hard problems and the other 5% can be avoided by
+        massaging the initial problem, it's much more likely that the same developer 
+        will do some up-front work to just use what exists. 
+    </li>
+    <li>
+        Finally, and perhaps most surprisingly, we all agreed that it's
+        important to make sure you have a PR push to make other engineers aware
+        of what you've built. On a small team, this can be as simple as an email + message
+        to your Slack channel saying "hey, did you know about this cool new
+        thing we have", but that probably isn't sufficient when you have a team
+        of engineers getting innundated with emails. Our most successful
+        infrastructure projects have built a critical mass of support by going
+        out and showing other people how their solution solves that team's
+        problem.  In this way, things like our Data Pipeline have built a 
+        critical mass of awareness such that the first thing people think of
+        when they're trying to stream data across Yelp!.
+    </li>
+</ul>
+
+<p>A lot of these ideas feel really obvious in retrospect, but it's also really
+easy to fall into the trap of producing another 60% solution to that just solves your team's
+version of a problem.  It seems like the best solution we've settled on as an
+industry is to have infrastructure teams who are incentivized to serve internal
+developers combined with feature teams which use those tools and build solutions
+to problems which may just work for themselves. I'd love to see if any teams
+have built up a system that encourages every engineer to build widely applicable
+infrastructure.</p>
