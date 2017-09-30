@@ -1,0 +1,106 @@
+---
+layout: post
+title: The Benefits of Shipping Code In Small Chunks 
+---
+
+<p>One of the more unintuitive things in professional software development is
+the idea that you should break your code up into small, fully functioning
+chunks, rather than shipping it all as one big change. After all, wouldn’t more
+changes mean more code reviews, more pushes, and more opportunities for
+production to break, all of which slow down the time spent actually building
+useful features? Yes, shipping more changes does absolutely require doing more
+of all the above. However, it also has a myriad of benefits which make it the
+better and more scalable, approach to shipping code.</p>
+
+<h3>Shipping small changes helps you ship code faster</h3>
+<p>Every change you make adds complexity into your system: the larger the
+change, the more complexity it is likely adding to your system. This complexity
+comes in two forms: the obvious complexity of the new lines code you’re adding,
+and also the more insidious complexity of how each part of that change interacts
+with the rest of the system.</p>
+
+<p>In software, any one mistake can break our system, so anyone responsible for
+reviewing your code must both understand all the new code and also how it
+interacts with the existing system before they’re able to provide effective
+feedback and approval. This need for context building slows down code review
+feedback cycles and means that you to wait longer for your change to be fully
+reviewed. Every second of this review is a second you lose context on the code
+you wrote, meaning the longer you have to wait for a code review, the longer it
+will take you to respond to that feedback.</p>
+
+<p>If you ship code in small changesets you avoid this productivity pit by
+making shipping new features in smaller, more well understood steps. This helps
+your reviewers quickly understand your code and provide effective feedback and
+saves you from having to rebuild context on the code you wrote. The end result:
+faster code reviews, faster approvals, and faster changes shipped to
+production.</p>
+
+<h3>Shipping Small Changes Means Wrangling With Version Control Less
+    Frequently</h3>
+<p>Large changes take a long time to implement, test, and review before they can
+ultimately be merged into master. While this is happening, the rest of your team
+isn’t standing still: they’re working on shipping their own features, some of
+which may be changing code you depend on. Similarly, you may be changing code
+that your teammates are depending on for their own feature to work.</p>
+
+<p>Unfortunately, these dependencies between these on these features is silent,
+and you’ll only see your teammates changes when you merge with their branch, and
+visa versa. Doing this regularly with multiple feature branches quickly becomes
+a headache, and you’ll find yourself wishing for a better way to make sure
+people are not adversely affected by others’ work.</p>
+
+<p>Fortunately, there’s an easy way to do this: have small changes that you
+continually merge into master. This workflow improves this situation for
+everyone involved. You benefit because your feature is constantly being built
+off the latest changes in master, meaning you’re not surprised by a merge
+conflict, and your teammates get consistent visibility into how your feature is
+changing the code base, so their world doesn’t get changed out from under them.
+It’s a win-win for everyone!</p>
+
+<h3>Smaller changes represent smaller, more reversible decisions.</h3>
+<p>If you have a change that implements a large feature from in one big bang
+commit, it represents a lot of decisions about the future of your codebase. For
+example, a fully functioning backend API endpoint may include decisions about
+your database tables, how the business logic should be architected, and
+ultimately about the public API your service will expose.</p>
+
+<p>Tying all these decisions together in one large change means that you’ve
+coupled all these decisions together, and a change in any one may result in you
+having to rework large parts of your feature even after you thought it was
+“done”. This is no bueno both in terms of your own happiness and making you the
+most productive.</p>
+
+<p>You can avoid this conundrum by shipping your code in small changes which
+make small decisions that validate any assumptions you have and give any
+additional information. If your decision is validated, awesome, you can go and
+build out the next piece of your feature. However, it turned out to be bad, then
+you don’t have many sunk costs, so it’s easy to revert that change and do it
+better the next time.</p>
+
+<h3>Shipping small changes forces you learn how to manage large projects</h3>
+<p>Project management is a different game than just writing code yourself. While
+writing code solo is an exercise in design and implementation, project
+management is a constant game of managing dependencies, scoping out work, and
+figuring out what things your team can do to keep moving forward while their
+dependencies fall into place.</p>
+
+<p>When you ship features as small changes, you learn to do exactly this. You
+understand the end state, take a look at what you have now, and figure out where
+you can slice off a logical piece of functionality to ship. This forces you to
+learn how to simplify an ambiguous task into logical components, ship components
+which unblock future work, and manage dependencies between your code reviews to
+make sure that you never block yourself.</p>
+
+<p>If you start building the skills starting from your smallest changes, then
+managing a large project with multiple developers is not a foreign skill set to
+master. Instead, it’s just a matter of using the same skills you’ve already
+learned, but applying them on a larger scale.</p>
+
+<p>Like many other things, shipping your code in small changes is not a panacea
+which will solve all your development woes. Just because your code goes to
+production 300 lines at a time doesn’t mean that you’ll suddenly have no bugs
+and there won’t be any overhead in coordinating between your team. However, it
+does do is create a process which allows teams to regularly and safely deploy
+code to production while minimizing the amount of time spent stepping on each
+others’ toes. I think that’s something we can all agree is a good thing.</p>
+
