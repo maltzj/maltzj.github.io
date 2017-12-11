@@ -1,0 +1,188 @@
+---
+layout: post
+title: Adventures in Gradle Dependency Resolution
+---
+
+
+<p>Currently at Yelp I'm working on building out our next generation
+experimentation infrastructure, a large part of which involves writing a Java
+wrapping library around a Rust library which does most of the heavy lifting of
+our experimentation. Yelp is mostly a Python shop, but
+we also have a few backend Java services; this meant that when we went to
+implement our Java wrapper, we decided to just write it once in pure
+Java and write a thin layer of Android code on top of that to
+provide Android-specific capabilities like logging to adb.</p>
+
+<p>This means we have a single Gradle project which is built something like
+this:</p>
+
+<img src="{{site.url}}/assets/gradle-project-structure.png" />
+
+<p>Since our Java code communicates with our Rust code over <a
+    href="https://en.wikipedia.org/wiki/Foreign_function_interface">FFI</a>, we can't just pass
+configuration objects into our Rust library to control its initialization  Instead,
+we need to pass the desired configuration to the Rust library as a JSON string,
+and then let Rust create the necassary models on its side of the FFI boundary.
+Unlike Android, which provides the
+org.json APIs by default, Java does not come with JSON capabilities built-in, so
+we needed a library which could create JSON strings for us.  We took a quick
+look at GSON and Moshi, but were both way heavier than we needed for our
+purpose. Instead,  we decided to use Google’s json-simple library, which exposes a very similar API
+to the one that Android exposes.</p>
+
+<p>From there, library development went swimmingly until we went to add the
+latest version of our Android library to the Yelp app.  When we did that, our
+app would fail to build with the following error:<br />
+<pre>Warning: Conflict with dependency
+    junit:junit. Resolved versions for app (4.10) and test app (4.12)
+    differ</pre>.</p> 
+
+<p>What the heck is going on here?  Digging around in <a
+    href="https://developer.android.com/studio/test/index.html">the Android
+    documentation</a>, we
+discovered that Android creates an instrumented version of your app for
+testing, and will yell at you if there are any difference between the
+instrumented version of your app and the normal production one.  This is super
+helpful, as it prevents you from say, using OkHttp 3.5 in your app and relying
+on some behavior there, but testing against OkHttp 3.3, where that behavior
+doesn't exist.</p>
+
+<p>We started bug hunting by first looking in both our library code and app code to see where JUnit 4.10
+was coming from. However, we quickly found that we declared JUnit 4.12 for all
+of our compile configurations in both our Java wrapper and our Android application.
+What's more, we reasoned that Gradle's <a
+    href="https://docs.gradle.org/current/userguide/dependency_management.html">default
+    dependency resolution strategy</a> should
+always choose JUnit 4.12 even if we did let 4.10 slip in as a dependency.</p>
+
+<p>After scratching our head for a while, someone on our team had the idea to
+look at the <a
+    href="http://central.maven.org/maven2/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.pom">pom.xml
+    for json-simple</a> (Gradle uses Maven's pom.xml format for
+resolving dependencies, even though it is a separate build system) and
+discovered that JUnit is declared as a dependency of json-simple. This meant
+that when we pulled in json-simple as a implementation dependency, we were also
+packaging all of JUnit 4.10 with our app!  Then, when Gradle went to build our
+app, it was finding a conflict between the version of JUnit we accidentally
+dragged in and the version we cared about for our tests.</p>  
+
+<p>The solution to this was to include a little snippet in our app’s build.gradle file. 
+    <pre>
+    allprojects {
+        configurations.all {
+            resolutionStrategy {
+                eachDependency { DependencyResolveDetails details ->
+                    switch(details.requested.group) {
+                        case 'junit':
+                            details.useVersion junitLibVersion
+                            break
+                    }
+                }
+            }
+        }
+    </pre>
+</p>
+
+<p>This snippet basically tells Gradle “anytime someone specifies a JUnit
+dependency, ignore the version that they set and use junitLibVersion (in our
+case 4.12)”.  For more about ResolutionStrategies, you can check the <a
+    href="https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.ResolutionStrategy.html">Gradle
+    docs</a>.</p>
+
+<p>After we added this snippet, we could build and test the app.  Huzzah!  However,
+we hadn't solved the root cause of our problem (JUnit being packaged with our
+production app), so another snag came up when we
+went to merge to master and create a release build.  All of our tests passed,
+but the our release apk build step failed with the following errors:</p>
+<p>
+    <pre>
+    Warning: there were 5 instances of library classes depending on program classes.
+    You must avoid such dependencies, since the program classes will be processed,
+    while the library classes will remain unchanged.
+    (http://proguard.sourceforge.net/manual/troubleshooting.html#dependency)
+    </pre>
+</p>
+
+<p>When we went to the link, we saw the following description of this error:</p>
+
+<p>
+    <em>
+        In Android development, sloppy libraries may contain duplicates of classes
+        that are already present in the Android run-time (notably org.w3c.dom,
+        org.xml.sax, org.xmlpull.v1, org.apache.commons.logging.Log,
+        org.apache.http, and org.json). You must remove these classes from your
+        libraries, since they are possibly inconsistent, and the run-time libraries
+        would get precedence anyway.
+    </em>
+</p>
+
+<p>"Libraries that use org.json" sounded a lot like us at first glance,
+especially since json-simple's package is awfully similar to org.json.  However,
+json-simple has its JSONObject class packaged as org.json.simple.JSONObject
+whereas Android packages this as org.json.JSONObject. Java uses fully qualified
+names in order to resolve classes, so we determined that this warning was not
+due to duplicate JSON packages.  After a bit more head scratching, we then went back to the initial console output
+and saw the following:</p>
+
+<p>
+    <pre>
+    11:27:32 Warning: library class android.test.AndroidTestRunner extends or implements program class junit.runner.BaseTestRunner
+    11:27:32 Warning: library class android.test.InstrumentationTestCase extends or implements program class junit.framework.TestCase
+    11:27:32 Warning: library class android.test.InstrumentationTestSuite extends or implements program class junit.framework.TestSuite
+    11:27:32 Warning: library class android.test.suitebuilder.TestSuiteBuilder$FailedToCreateTests extends or implements program class junit.framework.TestCase
+    </pre>
+</p>
+
+<p>It turns out that our JSONObjects were not the problem at all, it was JUnit!
+It turns out that forcing JUnit 4.12 resolved our dependency mismatch between
+test and real apps, but we were still packaging JUnit with our actual
+application! This version of JUnit was providing classes that Android already
+had a copy of, and Proguard was helpfully making sure that we didn't get
+nondeterministic behavior.</p>
+
+<p>Once we figured this out, the fix was straightforward.  We didn’t actually
+need JUnit at runtime, and we’re already compiling it in for our tests.  So we
+can just exclude all of our JUnit dependencies when we depend on the Bunsen
+library.  This is easily done with Gradle by including:</p>
+
+<p>
+    <pre>
+    implementation("com.yelp.library:$libVersion", {
+            exclude group: 'junit'
+        })
+    </pre>
+</p>
+
+<p>After that, everything worked beautifully and we merged to master
+smoothly.</p>
+
+<p>Looking back on this process, a few things stand out as learning experiences
+for me:
+    <ol>
+        <li>
+            <b>Take time to read your error messages:</b>  It’s so easy to read one line
+            and think you know what’s going on, like when we saw “oh, an issue with
+            org.json”.  Before implementing, take the time to read glean as much
+            information as you can from your logs.  It’ll make your debugging
+            process go way quicker.
+        </li>
+        <li>
+            <b>Gradle isn’t black magic:</b> it’s a tool like any other: Gradle’s syntax
+            can be funky and hard to understand, but it’s still just a whole bunch
+            of code that’s running.  Understanding how Gradle resolves dependencies
+            and how its syntax works can go a long way towards solving your build
+            woes.
+        </li>
+        <li>
+            <b>Make sure you understand the code you're copying from
+                StackOverflow:</b> There are a lot of solutions to Gradle problems
+            which involve slapping together some poorly understood answer on
+            StackOverflow.  This leads to Gradle continuing to feel like Black
+            Magic.  Make sure to take the time to understand what this solution that
+            someone suggested is actually doing before adding it into your codebase.
+            One great way I've found to do this is instead of copying and pasting
+            code, take the time to write it yourself.
+        </li>
+    </ol>
+</p>
+
