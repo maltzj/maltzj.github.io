@@ -33,9 +33,10 @@ to the one that Android exposes.</p>
 <p>From there, library development went swimmingly until we went to add the
 latest version of our Android library to the Yelp app.  When we did that, our
 app would fail to build with the following error:<br />
-<pre>Warning: Conflict with dependency
-    junit:junit. Resolved versions for app (4.10) and test app (4.12)
-    differ</pre>.</p> 
+<pre>
+  Warning: Conflict with dependency junit:junit. Resolved versions for 
+  app (4.10) and test app (4.12) differ
+</pre>.</p> 
 
 <p>What the heck is going on here?  Digging around in <a
     href="https://developer.android.com/studio/test/index.html">the Android
@@ -126,10 +127,14 @@ and saw the following:</p>
 
 <p>
     <pre>
-    11:27:32 Warning: library class android.test.AndroidTestRunner extends or implements program class junit.runner.BaseTestRunner
-    11:27:32 Warning: library class android.test.InstrumentationTestCase extends or implements program class junit.framework.TestCase
-    11:27:32 Warning: library class android.test.InstrumentationTestSuite extends or implements program class junit.framework.TestSuite
-    11:27:32 Warning: library class android.test.suitebuilder.TestSuiteBuilder$FailedToCreateTests extends or implements program class junit.framework.TestCase
+    11:27:32 Warning: library class android.test.AndroidTestRunner extends 
+                      or implements program class junit.runner.BaseTestRunner
+    11:27:32 Warning: library class android.test.InstrumentationTestCase extends 
+                      or implements program class junit.framework.TestCase
+    11:27:32 Warning: library class android.test.InstrumentationTestSuite extends 
+                      or implements program class junit.framework.TestSuite
+    11:27:32 Warning: library class android.test.suitebuilder.TestSuiteBuilder$FailedToCreateTests 
+                      extends or implements program class junit.framework.TestCase
     </pre>
 </p>
 
