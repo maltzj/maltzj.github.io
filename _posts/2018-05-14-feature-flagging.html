@@ -1,0 +1,113 @@
+---
+layout: post
+title: Effective Feature Flagging on Mobile 
+---
+
+<p>Feature flagging is a great way to reduce risk by allowing features to be
+turned off remotely, but only if it's done correctly.  I recently incorrectly
+feature flagged some code at Yelp! and wanted to share some lessons learned to
+help avoid similar issues in the future.</p>
+<h3>
+    First, Some Context
+</h3>
+<p>
+    Our team is currently working on migrating our App's analytics system to
+    use a new event logging library.  Getting correct metrics is important, so we
+    decided to start by dual logging all of our analytics through our legacy library 
+    and the new library and then comparing them for consistency.  We had tested
+    the new library, but we weren't totally sure how it would behave in
+    production, so we decided to put it behind a feature flag in
+    case anything blew up.
+</p> 
+
+<p>
+    This process initially seemed super easy: as all we needed to do was add some
+    code in our base Application class that looked like:
+</p>
+<p>
+  <pre>
+    LegacyAnalyticsSystem legacySystem = LegacyAnalyticsSystem();
+    if (Features.new_logging_infra.isEnabled()) {
+        // The legacy system publishes its analytics as a stream.  The new
+        // subscribes to that and transforms them.
+        newAnalyticsSystem.subscribeTo(legacySystem.analyticsStream()); 
+    }
+  </pre>
+</p>
+<p>
+    Before shipping we did all our normal dilligence.  We wrote unit tests for
+    the new system and tested cases where the flag was both on and off.
+    Everything came up green, so we happily shipped to production with the flag turned on.
+</p>
+
+<p>
+    Once our release rolled out, our backend engineers started reporting issues
+    where we were logging incorrect data from the new system. That wasn't great
+    news, but fortunately, we had a feature
+    flag we could use to run it off! We went into our feature flagging system,
+    turned the feature off, and... the errors still persisted. This left us
+    feeling a little like <a
+        href="https://www.youtube.com/watch?v=nZMwKPmsbWE">WTFMate</a>?
+</p>
+
+<p>
+    After thinking about it a little more, we realized that we had incorrectly
+    feature flagged this code.  Our feature flag was only getting checked in our
+    base Application class on app startup.  This meant that the application
+    would need to get killed and restart in order for our changes to take
+    effect.  Talk about bad!
+</p>
+<h3>
+  What should we have done instead?
+</h3>
+<p>
+    We had the right idea with feature flagging this code, but our error here
+    was WHEN we actually checked the feature flag.  Instead of feature
+    flagging the point of subscription to the existing analytics system, we
+    should have feature flagged the actual point of logging.
+</p>
+<p>
+    This would mean that our Application class had code that looked
+    something like: 
+    
+    <pre>
+        legacySystem = LegacyAnalyticsSystem();
+        newAnalyticsSystem.subscribeTo(legacySystem.analyticsStream())
+    </pre>
+
+    Then, in our subscribeTo method, we should have included code
+    which looked something like:
+    
+    <pre>
+      fun subscribeTo(analyticStream: Observable<Analytic>):
+        analytisStream.subscribe({
+            if(Features.new_logging_infra.isEnabled()) {
+                // Send the log event via the new infrastructure.
+            }
+        })
+    </pre>
+</p>
+<p>
+    This would check whether the feature flag is enabled before sending any
+    analytics, which would have meant that any changes on the backend were
+    immediately seen on the client.
+</p>
+<h3>
+  So what did we learn from all this?
+</h3>
+<p>
+  This process left me with two big takeaways.
+  <ol>
+      <li>
+          Feature flagging is great, especially for new infrastructure that
+          you want to expose to production situations, but you're not entirely
+          confident in.
+      </li>
+      <li>
+          Make that if you are feature flagging a piece of code, that the flag
+          itself is checked frequently.  A flag that is only checked once per
+          application lifecycle is harder to turn off than one which is checked
+          frequently.
+      </li>
+  </ol>
+</p>
