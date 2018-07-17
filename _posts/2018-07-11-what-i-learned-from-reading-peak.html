@@ -1,50 +1,153 @@
-Outline:
 
-Big Idea: Peak helped me become a better engineer by showing me that I needed
-specific ideas of what to improve, specific exercises to improve them, and
-feedback mechanisms.
+<p>Continuing to learn and improve as a software engineer can become increasingly
+hard over time.  When you first learn to code, there are an infinite
+number of new things to learn.  You learn about algorithms, frameworks,
+languages, and APIs.  Best of all, all of this just sort of happens: if
+you've never written code before, the mere act of typing into a computer and
+making it work is challenging and pushes you to grow.  Over time though, that
+growth path starts to peter out: there are only so many language features you
+can learn or libraries to master before you start hitting diminishing returns.
+Past that point, you've got a couple of options: you can rest on your laurels,
+content, in the knowledge you have built up.  Or you can roll-up your sleeves
+and start to think about growth a little differently to continue to level up
+your own skills.</p>
+
+<h3>Why's it gotta be so hard?</h3>
+
+<p>One of the reasons it's easy to hit a plateau as a software engineer is that
+much of the educational material is knowledge-based material.  There are a
+limitless number of blog posts on the internet which will give you the knowledge
+for how to do something.  You can read blog posts about different architectures,
+kotlin language features, systems design, or monitoring.  However, as Anders
+Erickson points out in his book <em>Peak</em>, this accumulation of knowledge alone is
+not enough.  Knowledge is great, but on its own, knowledge is useless; knowledge
+must be turned into skills in order for it to be valuable, and there's only one
+way to turn knowledge into skills: <em>practice</em></p>
+
+<p>We rarely talk about how to practice as software engineers. We often talk about 
+surrounding yourself with the best possible people, sharpening the saw, or
+staying up-to-date with the latest changes in technology, but all of these come
+with the explicit assumption that if you do this, you'll just figure out how to
+incorporate those new ideas into your own engineering.  In <em>Peak</em>,
+Erickson shows how this idea is flawed, and proposes a variety of practice
+models which are more effective.  There's some nuance in the types of practice
+he suggests, but all of them have four key elements:</p>  
+
+<ol>
+    <li>Decide on a thing you would like to learn</li>
+    <li>Figure out an excercise which will force you to do that thing better by
+        pushing your boundaries in some way.</li>
+    <li>Get feedback on how you did on the exercise</li>
+    <li>Figure out how to do the exercise better next time</li>
+</ol>
+
+<h3>Applying This to Software Engineers</h3>
+
+<p>Now that we have this model of practice, but how can we apply it to improving
+as software engineers?  Well, the first step would be to identify the skills
+which make great software engineers.  While a full list is outside the scope of
+this post, it's safe to say that all great software engineers can:</p>
+
+<ul>
+    <li>Write correct code with good velocity </li>
+    <li>Effectively communicate peers</li>
+    <li>Design systems which are extensible and maintainable</li>
+</ul>
 
 
-Three points:
-i. Peak is a book by Anders Ericson which comes with a very simple idea: you
-become better at something by building practicing specific skills and getting
-feedback for how that practice went.
-ii. That type of idea is rarely intentionally applied to software engineering
-    a. Knowledge vs. Skills Dichotomy
-    b. We frequently focus on the accumulation of knowledge, which is valuable,
-    but it's only valuable in the service of skills. Note study about doctors not
-    actually becoming better doctors in spite of going to lots of conferences.
-    c. Learning knowledge is also MUCH easier than accumulating skills. 
-iii. How can we do that?
-    a. First, define specific skills that people need to acquire.
-    b. Then we need to define a series of exercises that allow us to do that
-    c. Devise feedback mechanisms
-iv. Examples!
-    1. Generating multiple solutions of various technical costs 
-        Exercise: Before implementing a change, you could ask yourself to make
-        a list of all the ways a solution, and share it with a co-worker.
-        Feedback: Share your list with a teammate, ask if they have any ideas
-        about other ways that you may have missed 
-    2. Ability to design systems in a simple, testable way
-        Exercise: Take a look at an existing codebase. Write down the major
-        components and describe how they would fit together in a more testable
-        way along with their APIs.
-        Feedback: Sketch out a test plan given the APIs you described.  How well
-        could those be tested?
-    3. Ability to communicate in a clear, succint way for a variety of audiences
-        Exercise: Take a complicated technical topic from your team.  Write up
-        short descriptions for each audience.
-        Feedback: If you're brave: ask someone to explain them back to you.  If
-        not, are you able to spend less time clarifying ideas?
-    4. Ability to read a code review and make sure it has adequate code
-        coverage 
-        Exercise: Write up a test plan for a change after reviewing code but
-        before you review its tests. 
-        Feedback: Are all those test cases covered by the change?  Are there any
-        changes that the author added, but you missed.
-v. Conclusion
-    a. Peak gives a clear idea of how to get better at something, and it has
-    pushed me to become more concrete in how I approach my own growth as an
-    engineer.  I hope that more conferences and companies use its lessons in
-    order to teach skills to engineers rather than relying purely on
-    knowledge-based teaching.
+<p>How can we design exercises which force us to get better at those skills?
+Well, that's the tricky part: many of these skills have long and unclear
+feedback cycles.  For example, if you design a system which seems ot be
+extensible and then a new totally unanticipated requirement comes in, does that
+mean you did a poor job designing the system?  Or does it just mean that
+software is hard and we need to be able to adapt to things changing?</p>
+
+<p>It's easy to just throw your hands up at this point and say "well, software
+is hard, we'll just do our best and keep pushing through", but there are some
+ways that we can push through that ambiguity.  The first is what <em>Peak</em> calls a
+"Top Gun" approach to practicing (named after the flight school).  In this approach, you don't know the right
+answers beforehand, so you try something, and then go back and evaluated what
+worked and what didn't.  This is effectively what the agile movement
+accomplishes by having regular retrospectives where the team discusses what they
+should start/stop/continue.  In my experience, I've seen these be a powerful
+tool to discuss team processes, but I have not seen them applied to a
+team or individual's technical skill.  Nonetheless, we should be able to apply
+them to discuss to an individual's actions on a project and determine what could
+be done better.</p>
+
+<p>The second is to observe expert performers and see how they accomplish the
+task.  Then we can decompose that process into a series of specific skills which
+can be trained more closely.  It may be hard for us to specifically train "how
+should we design better systems", but maybe after watching a really great
+software engineer, we see that they design systems by listing out all the major
+functionalities of the system, grouping them into a variety of different
+groupings, thinking about the tradeoffs between them, deciding on which set of
+tradeoffs is best given their understanding of the requirements, and finally
+enumerating failure modes and putting safeguards in place.  Then we can go back
+and create a series of exercises which trains each one of those skills
+individually, and then get feedback from the expert on how we did at each stage.
+This is one of the big values of having a mentor: it gives you an expert
+performer who can help decompose complex skills into a series of more digestible
+steps.</p>
+
+<h3>What does it look like in practice?</h3>
+
+<p>So now we've talked about this idea of applying a practice-first mindset to
+growing our skills as a software engineer, but what does that look like in
+practice?  I've been working through this process myself for the past couple
+months, so let me share a few specific sets of exercises I've built up to help
+me learn these skills.</p>
+
+<h4>Technical Leadership</h4>
+
+<p><b>What's the class of skills to improve?</b>Technical Leadership</p>
+
+<p><b>What's a specific skill within that I can improve?</b>Generating Multiple
+approaches to solving a problem before settling on one</p>
+
+<p><b>What's an exercise I could do for that?</b> Before deciding on an
+implementation direction, write down all of the options along with their pros
+and cons.</p>
+
+<p><b>What's the feedback mechanism?</b> After generating a list of ideas, make
+a decision and show to a senior member of the team.  Ask if they have any
+pros/cons that I may have missed, and which decision they would make.  If
+different than my decision, discuss why they would make that.</p>
+
+<h4>Becoming a Better Code Reviewer</h4>
+
+<p><b>What's the class of skills to improve</b>Code reviewing</p>
+
+<p><b>What's a specific skill within that I can improve?</b>Taking time to
+evaluate the code review as a whole rather than just focusing on the individual
+pieces.</p>
+
+<p><b>What's an exercise I could do for that?</b> Before clicking "submit" on a
+code review, take a moment to list alternative ways that we could approach this
+problem.</p>
+
+<p><b>What's the feedback mechanism?</b>How frequently am I able to generate
+ways that the system could be improved overall?</p>
+
+<h4>Becoming a better communicator</h4>
+
+<p><b>What's the class of skills to improve</b>Communication</p>
+
+<p><b>What's a specific skill within that I can improve?</b>Succinctly verbally
+communicate ideas to a variety of audiences.</p>
+
+<p><b>What's an exercise I could do for that?</b> Fully formulate what I wat to
+say in my head before talking.</p>
+
+<p><b>What's the feedback mechanism?</b>How frequently do I find myself needing
+to clarify what I said or adding more words than needed?</p>
+
+
+<p>That just gives a few ways that we can apply this mindset of practice to growing
+skills as a software engineer.  Almost all of them though follow a similar
+pattern: they've forced me to decompose a large, complex skill into something
+that is digestible and trainable.  Once we had that, it's a question of finding
+the appropriate feedback mechanism and working hard to improve that.  I've found
+this to be tremendously valuable for my own improvement in a variety of areas,
+and I hope this approach can be valuable for you as well as you think about
+trying to grow your own software engineering skills.</p> 
