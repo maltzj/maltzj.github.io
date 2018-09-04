@@ -1,0 +1,77 @@
+---
+layout: post
+title: Do You Really Need That JSON Array?
+---
+<p>When building APIs, it’s common to run into a problem
+which is basically a form of “We want an API that will support a list of
+something.”.  In situations like this, it can be tempting to just send back a
+JSON Array and call it a day.  However, I've found that this is rarely the
+right decision, and by making a slight tweak to this design you can make your
+APIs much more extensible.</p>
+
+<p>To understand why structuring your response as a top-level JSON Array may be
+a problem, consider the following: let’s say we’re trying to show a list of
+restaurants in an application.  If we’ve naively serving up an array of
+restaurants from our API, that means our responses will look something like the
+following:</p>
+
+<pre>
+[
+    {
+         “restaurant_id”: 1234,
+         “restaurant_name”: "My restaurant",
+         “restaurant_cuisine”: "Indian",
+         ... 
+    }
+    ... 
+]
+</pre>
+
+<p>On the surface, this is totally fine: you can parse this JSON with any
+library and handle it easily.  However, what happens if you want to do something
+like add a list of suggested search filters that the user could drill down by?
+With this API design you don’t have many options: you basically have to ship a
+breaking API change in order to support the new feature or create another
+endpoint.</p>
+
+<p>The shame of the situation is that it’s easily avoided.  If instead of
+sending back a top-level JSON Array, we made our top-level element a JSON Object
+with a single key, we would’ve ended up with a response which looked something
+like the following:</p>
+
+<pre>
+{
+   “restaurants”: [
+   {
+       “restaurant_id”: 1234,
+       “restaurant_name”: "My restaurant",
+       “restaurant_cuisine”: "Indian",
+       ... 
+   }
+   ... 
+   ]
+}
+</pre>
+
+<p>Now if we want to add search filters we can just add another key to the
+top-level JSON object, giving us something like:</p>
+
+<pre>
+{
+   “restaurants”: [
+       ... 
+   ],
+   “suggested_search_filters”: [
+       ... 
+   ]
+}
+</pre>
+
+<p>Boom! Instant backwards compatibility with no hassle.</p>
+
+<p>There are probably cases where adding the additional layer of nesting is not
+the right decision, but I’ve found that the flexibility provided by the approach
+outweighs the costs in all situations I’ve encountered.  So the next time you’re
+thinking about building an API to surface a list of content and you’re tempted
+to reach for a JSON Array, ask yourself “should I make this an object instead”,
+it might just save you some headache down the road.</p>
