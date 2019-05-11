@@ -1,0 +1,115 @@
+---
+layout: post
+title: Writing Good System Overviews 
+---
+
+<p>Over the years at Nuna, our data platforms have grown from small pipelines
+which served simple analytics, to large, polyglot pipelines which can help
+patients receive personalized doctor recommendations. As we’ve scaled, our
+inline documentation and README’s for specific libraries have been helpful, but
+haven’t been sufficient to help new hires understand how our whole system fits
+together. In order to help our “Newnas” get up to speed faster, we’ve written a
+different type of documentation: a system overview, detailing how the whole
+system comes together.</p>
+
+<h2>What’s a System Overview?</h2>
+
+<p>No matter how well you’ve architected your system, at the end of the day,
+it’s all just text. For someone to be productive in your system, they need a
+mental model of how the system works in order to translate the text they’re
+reading into higher level concepts. That’s where system overviews come in.</p>
+
+<p>System overviews are documents designed to create a mental map of how a
+system works. When done well, they help provide the context new hires need to
+start delivering code quickly and with confidence. When neglected, or written
+poorly, system overviews can cause confusion for new members on the team as they
+work to understand the cause of an issue.</p>
+
+<p>Building these mental maps may seem hard, but it only requires three key
+steps.</p>
+
+<h2>Step 1: Design a block diagram to provide a birds-eye view of the
+system</h2>
+<p>The first step in designing a mental map of the system is to create a visual
+model. Create a block diagram where the major components are blocks and the
+relationships between them are expressed as arrows. This diagram helps
+developers build a baseline understanding of the system and begins to demystify,
+and contextualize, the terms their teammates’ use when talking about their
+work.</p>
+
+<p>It can be tempting to over-specify the details of this block diagram, but
+it’s best to strive for brevity and clarity rather than completeness. It’s more
+helpful to have a concise, rather than cluttered, diagram. You’ll be able to
+better express the additional details in the next component of the system
+overview.</p>
+
+<h2>Step 2: Write descriptions for each block</h2>
+<p>The block diagram introduces a rough mental model of how the system
+interacts, but doesn’t provide the supporting detail explaining how each piece
+operates. Understanding these details is essential to achieving a greater
+awareness of how the system functions.</p>
+
+<p>This documentation doesn’t need to be an exhaustive description, but it
+should answer some key questions about each component. These include:</p>
+<ul>
+    <li>What is the purpose of this component?</li>
+    <li>What information does it take in?</li>
+    <li>How does it operate on the input?</li>
+    <li>What information does it produce?</li>
+    <li>Are there any special design considerations when making one of these?</li>
+</ul>
+<p>The answers to these questions should be brief (2 paragraphs is a sweet spot)
+and allow people to look at any class and start to understand roughly what it
+does and how it fits into the system. Including these write-ups in your system
+overview helps others have a better idea of where their bugs may be hiding, or
+where to incorporate a new feature.</p>
+
+<h2>Step 3: Create a concrete example of the system in action</h2>
+
+<p>Close your system overview by creating a worked example to show step-by-step
+how the pieces in your system solve a problem. This last step helps to cement
+your readers’ understanding of the system, and turn theory into practice.</p>
+
+<p>Good examples contain a few key traits:</p>
+<ol>
+    <li>
+        <b>They are real</b>: Resist the temptation to create an example filled with names
+        like <pre>FooCleaner</pre> or <pre>BarProcessor</pre>. Names like Foo and Bar are convenient, but they
+        don’t help to build a plausible mental model. A contrived, but relatable,
+        example is much better.
+    </li>
+    <li>
+        <b>They include real, small code examples</b>: Your system overview should contain
+        code that demonstrates how to solve your example problem. This code should
+        be long enough to help readers understand your descriptions, but shouldn’t
+        go into too much detail.
+    </li>
+    <li>
+        <b>They touch the whole system</b>: If something appears in your block diagram, it should also appear in your example so your reader can develop a complete mental model.
+    </li>
+
+<h2>Keeping system overviews up-to-date</h2>
+
+<p>Once you’ve completed these three steps — designing a block diagram, writing
+descriptions of each block, and creating a worked example — your system overview
+is in a good place. That’s not to say that our work is done; we still need to
+keep your system overview up-to-date as the system changes.</p>
+
+<p>New users to your system are the best monitors of existing documentation, so
+have them review it as part of their ramp-up. After they’ve read it, have them
+explain what they learned and ask questions. Afterwards, revisit the system
+overview, and add any necessary detail to clarify any pieces that may be out of
+date.</p>
+
+<p>Our system overviews are constantly evolving, but they’ve proven valuable in
+helping to establish a high-level perspective of how our systems work. While
+they require some time up-front to write, that investment has more than paid off
+in terms of easier onboarding as our systems become more complex. A system
+overview is never done, but we’ll keep evolving them as we update our systems
+and find new ways to improve patients’ quality of care.</p>
+
+<em>Note: This initially appeared on the <a
+href="https://blog.nuna.com/writing-system-overviews-1d1fafb81f31">Nuna Blog</a>
+I'm just cross-posting it here</em>
+
+
