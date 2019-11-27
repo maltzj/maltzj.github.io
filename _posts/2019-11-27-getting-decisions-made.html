@@ -1,0 +1,100 @@
+---
+layout: post
+title: "How do I get my ideas prioritized?" 
+---
+
+<p>A while ago I was struggling with the question of "how do I get a project
+prioritized."  I had an idea that everyone agreed was good, but it was
+languishing and other work was getting prioritzed. I talked to a mentor and he
+gave me a three-step process that I've since found very useful.  The process
+goes something like this</p>
+
+<h2>Step 1: Identify the decision maker</h2>
+
+<p>Who is the person who can grant you the authority to do the thing you want to
+do?  Chances are this is a product manager, or someone above you in the
+management chain.  If you can't get a clear answer here that's part of the
+problem, and you should work with possible decision makers to get one (or a
+group) appointed.  If you can't reach a consensus on a decision maker, escalate
+and get someone to appoint a decison maker.</p>
+
+<h2>Step 2: Figure out what the decision maker cares about</h2>
+
+<p>You may think you have the most whizz-bang idea under the sun, but if your
+decision maker doesn't see why it matters to them you won't get very far.  Spend
+time to figure out what matters to your decision maker.  You can get a
+first-pass idea of this by looking at what metrics they track (probably in the
+form of OKRs), and then you can sit down to talk with voices for a more
+qualitative understanding.</p>
+
+<h2>Step 3: Figure out what will not happen if your decision gets made</h2>
+
+<p>Time isn't infinite, so if a team starts to do your thing, they won't be
+doing something else.  Figure out roughly how large your idea is, and what would
+get cut if your team undertakes it.  This is a great time to brainstorm ways to
+figure out to trim your idea down to its simplest form, or figure out how you
+can align what you want to accomplish with an existing endeavor.  Both of these
+minimize how much work needs to be cut, and will likely make your pitch
+easier</p>
+
+<p>After you do this, evaluate whether or not your idea will help the decision
+maker in the axes that they care about.  If not, you should probably reconsider
+your idea, or try to reshape what matters to your decision maker (probably by
+changing the larger group's metrics)</p>
+
+<h2>Step 4: Make your case in the language of your decision maker</h2>
+
+<p>Present your idea to your decision maker, along with what will be cut, in a
+succinct format.  The format will depend on your context, but the core structure
+    of your message, but it will probably look something like: <em>We are
+        currently doing X.  If we start doing Y, then it will help us achieve
+        goals 1 and 2 faster/better/more reliably; this will mean we will need
+        to change Z, but we can safely do that by undertaking these mitigations.
+        I propose we start doing this by taking a step move this forward. Should
+        we take that step?</em></p>
+
+<p>This probably won't get you an immediate "yes", but you should leave this
+presentation with a clear action item of how to move forward on your idea, even
+if that answer is "not now, let's evaluate after 2 months."</p>
+
+<h2>An Example: Building Container Infrastructure</h2>
+
+<p>A while ago I thought that we should start to invest in building our
+container infrastructure for our web platform.  This would require us to get
+staffing from our infrastructure team to build something that was reusable
+across all of our systems.  I identified the decision makers as the team lead
+for our infrastructure team and the manager for our web team.</p> 
+
+<p>Next, I figured out what each of them cared about.  Our web manager had an
+OKR around launching our batch API and decreasing the time to create new
+integrations, and the infrastructure team lead had an OKR around enabling
+developers to fast feedback on infrastructure changes.</p>
+
+<p>I looked at what we were doing currently.  As part of our current
+integration, we were spending some time doing manual infrastructure
+configuration.  I knew that with Docker we could turn these into ephemeral
+environments. That would be some upfront costs, but it would make future client
+integrations faster.  It would also mean we could test our infrastructure
+changes locally by building containers.  This aligned with both the web team's
+KRs, and the  infra team's KRs.</p>
+
+<p>Now we had our first three things: we had identified decision makers (web manager
++ infra team lead), figured out what mattered to them, and figured
+out the tradeoffs involved in building our idea (slower delivery of current
+feature, and later delivery of some other features), but still felt that the
+trade-offs were worth it given our KRs. There was a risk that our containers
+work would take longer than anticipated, but we'd built a prototype to mitigate
+some of that, and we always had our quick and dirty original approach if we
+needed it.  Lastly, we had to make the decision.</p>
+
+<p>To do this, I had a meeting with all the stakeholders and wrote a 2-pager
+detailing the above, and asking for a clear decision: "should we spend 1 month
+of 2 engineers' time to build this feature using containers?"  There was a
+little bit of back and forth, but eventually we decided "yes, this is what we
+should do" and we built the thing.</p>
+
+<p>All of the above sounds easy, but it took around 6 weeks of discussions,
+drafting, prototyping, and refining before we ultimately took a call.
+Fortunately, by having a clear process, it never felt directionless.  This has
+since been my go-to process for managing new ideas, and I'd recommend it if
+you're struggling to get your own ideas prioritized.</p>
