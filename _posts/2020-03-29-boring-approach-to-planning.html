@@ -1,0 +1,127 @@
+---
+layout: post
+title: A Boring Approach to Long-term Planning 
+---
+
+
+Big idea: Write down the list of things you want to do, SWAG impact + effort,
+create a list of people , do math to determine overall possibility
+
+Point 1: Oftentimes you need to get an a sense of what work a team can do and
+how they should do it.  Perfection is not important, but getting _an answer is_
+Point 2: Get a list of projects w/ requirements and expected impact.  Give to
+engineers to prioritize
+Point 3: Then, you can do simple math to get some answers
+
+<p>Teams often find themselves in a position where they need to figure out how much
+work they can commit to.  This commonly occurs during a quarterly planning, but
+it can also show up if you're running a long project and trying to figure out
+how to hit your next milestone.  I've found that a default approach canhelp you
+answer these questions reasonably quickly and with minimal overhead..</p>
+
+<h2>Step 1: Figure out your goals</h2>
+
+<p>Before you go figuring out what your team should build, you need to figure
+out what your goals are.  In Silicon Valley, this frequently looks like defining
+OKRs, but any goal setting framework will do.  What's important is that you have
+some yardstick you can use to measure the impact of possible projects.</p>
+
+<h2>Step 2: Make a list of projects to achieve and their impact</h2>
+
+<p>Once you have your goals, the next step is to write down all the projects you
+could take on and their impact. In the interest of making sure this list doesn't
+become enourmous, a "project"  is something that will take > 2 staff-weeks of
+work, or projects that must be completed by the team. Most of these projects will be
+user-facing and come from product managers, but you also want to collect
+engineering-focused projects which improve scalability.</p>
+
+<p>Each of these projects should include a few things: a short description of
+the must-have and nice-to-have features (often ~1 paragraph), and a description
+of its impact. As much as possible, the impact should be in the language of the
+teams' goals. This will help make sure that all projects are prioritized on
+equal terms.</p>
+
+<h2>Step 3: Put Estimate ranges on all projects</h2>
+
+<p>Once you have a list of projects and their impact, the next step is to put
+estimates on all of the projects.  There are a variety of ways you can do this
+depending on how accurate you need your estimates to be.  In general, I've found
+that the best approach is to involve the people closest to the work in creating
+<a href="https://explainagile.com/blog/t-shirt-size-estimation/">t-shirt sized
+    estimates</a>.  This gives a "good enough" set of estimate ranges and it can
+be done pretty quickly.</p>
+
+<p>If you need more accurate estimates, it's worth reading Steve McConell's <a                                                                               
+    href="https://www.amazon.com/Software-Estimation-Demystifying-Developer-Practices-ebook/dp/B00JDMPOVQ">Software
+    Estimation: Demystifying the Dark Art</a> for a full list of techniques you
+can use.</p>
+
+<h2>Step 4: Figure out your capacity</h2>
+
+<p>Now you've got projects, impact, and estmiates.  The last thing we need
+before finalizing our plan is to understand what the team can actually
+accomplish.  Having historical velocity to calibrate against is best, but in
+the absence of that you can get by with taking the number of staff-weeks
+available on your team, and applying a haircut for things like PTO and
+on-call.</p>
+
+<p>Again, Steve Mconnell's book has a ton of great approaches you can use
+depending on your team and projects.</p>
+
+<h2>Step 5: Establish your overall plan</h2>
+
+<p>Now we have projects, impact, estimates, and capacity.  All that's left is to
+put them together and actually make an overall plan.  The simplest way to do
+this is to start filling up your team's queue with the "best" projects (probably
+defined as highest impact-effort ratio) until their the sum of their high
+estimates is equal to team capacity.  These are your "green" projects: the ones you'll plan around
+for the quarter.</p>
+
+<p>Then, keep stack-ranking the remaining projects until the sum of their
+low-estimates equals the team's capacity.  These are your "yellow" projects; the
+ones you'll work on if things go well, but will get cut depending on how well
+you deliver your other projects.</p>
+
+<h2>Step 6: Share a narrative of your plan</h2>
+
+<p>Now that you've got a plan, chances are other people in your company will
+care about it.  You can do most of the above steps in a spreadsheet, but you'll
+want to share it with others in a narrative.  For guidance on how to do this
+well, I'd suggest Guarav Oberoi's <a 
+    href="https://goberoi.com/on-writing-product-roadmaps-a4d72f96326c">Medium 
+    post on building product roadmaps.</a>  He outlines a slightly different
+process for building a roadmap, but the output should be pretty similar.</p>
+
+
+<h2>What are the strengths and weaknesses of this approach?</h2>
+
+<p>Overall I've found this approach to be effective for understanding what a
+team of ~6-10 people can build over a ~3 month time horizon, which makes it
+perfect for quarterly planning.  It can accomplish that pretty quickly: ~1-2
+weeks once your goals and high-level projects are defined.</p>
+
+<p>At the same time, this approach isn't a panacea.  In particular, it has a few
+limitations:
+<ul>
+    <li>It hand-waves over external dependencies.  This means that if you're in
+        an environment where you have a lot of complex dependencies, you may
+        need a more formal planning process.  If nothing else, it makes sense to
+        follow Guarav's advice of making sure to call out dependencies as a risk
+        in step 6.
+    </li>
+    <li>It doesn't give super accurate estimates, especially if you estimate
+        with t-shirt sizes.  I've found that's mostly-fine for most use-cases,
+        but could be an issue depending on how you use it.
+    </li>
+    <li>
+        It starts to break down past ~3 months.  The lack of dependency tracking
+        and estimate rigor means this is fine for ~1 quarter, but it means that
+        your more distant estimations will likely be more wrong.  If you need
+        clear planning past the quarter-level, consider more formal project
+        planning approaches.
+    </li>
+</ul>
+</p>
+
+TODO: WRITE SOMETHING HERE.
+
