@@ -1,0 +1,187 @@
+--- 
+layout: post 
+title: A Boring Approach to Quarterly Planning 
+---
+
+<p>Teams often find themselves in a position where they need to figure out how
+much work they can commit to, most commonly in quarterly planning.  If you've
+never done this before then wading through a world of possibilities to get to a
+commitment can feel impossible.  Fortunately, I've found that a default approach
+can help you establish a plan reasonably quickly and with minimal overhead.</p>
+
+<p>Before going further, I've created this <a
+    href="https://docs.google.com/spreadsheets/d/1A_kiYX1x4mUVD4kiCEuw22xe2YcyhVFJ4M2hjnUdmo8/edit#gid=0">this
+    spreadsheet.</a> as an example of this process for a theoretical food
+delivery company.  We'll be revisiting the spreadsheet a couple of times, so
+take a quick skim of the first row of each sheet.</p>
+
+<p>Skimming successful? Great. Let's move into the details.</p>
+
+<h2>Step 1: Figure out your goals</h2>
+
+<p>Before you go figuring out what to build this quarter, you need to figure out what you're trying to
+achieve.  In Silicon Valley, this frequently looks like <a
+                                                            href="https://upraise.io/blog/writing-effective-okrs/">defining
+                                                            OKRs</a>, but any
+goal setting framework will do.  What's important is that you have some common
+yardstick to measure each project's impact and prevent the loudest opinion from
+dictating what the team will work on.</p>
+
+<p>After you've defined your OKRs, write them down so they can be referenced
+later in planning.  This should give you something like <a
+    href="https://docs.google.com/spreadsheets/d/1A_kiYX1x4mUVD4kiCEuw22xe2YcyhVFJ4M2hjnUdmo8/edit#gid=0">the
+    first sheet of our example.</a></p>
+
+<h2>Step 2: Make a list of projects and their impact</h2>
+
+<p>Once you have your goals, the next step is to write down possible
+projects and their impact. In the interest of keeping this list manageable, a
+"project"  is something that will take more than 1 staff-week of work. Many of these
+will be user-facing features, but you also want to collect engineering-focused
+projects here.</p>
+
+<p>Each of these projects should include a short description of the
+requirements and a description of its impact. As much as possible,
+engineering and product-focused projects should describe impact should be in the
+language of the goals defined in step 1.  This will help make sure that all
+projects are prioritized on equal terms.</p>
+
+<h2>Step 3: Put estimates on all projects</h2>
+
+<p>Once you have a list of projects and their impact, the next step is to put
+estimates on them.  There are a variety of ways you can do this but, I've found
+    that having the people close to the work give <a
+                                                      href="https://explainagile.com/blog/t-shirt-size-estimation/">t-shirt
+                                                      sized estimates</a> is a
+                                                  good approach here.  T-shirt
+                                                  sizes are nice for this
+                                                  because they give high and
+                                                  low estimates, which
+                                                  appropriately convey
+                                                  uncertainty, and they can be
+                                                  assigned quickly.</p>
+
+<p>At this stage, you'll also want to allow for a little bit of push-and-pull on
+requirements.  If there are ways to deliver a subset of the project at a
+fraction of the cost, you'll want to surface that now so that you can
+incorporate that information in later stages of planning.  However, you don't want to
+negotiate over specific requirements at this stage, as that can quickly become a
+time-sink.</p>
+
+<p>Once you've done this, you should have a spreadsheet that looks something
+like <a
+         href="https://docs.google.com/spreadsheets/d/1A_kiYX1x4mUVD4kiCEuw22xe2YcyhVFJ4M2hjnUdmo8/edit#gid=1613272465">the
+         second sheet in our example.</a></p>
+
+<h2>Step 4: Figure out your capacity</h2>
+
+<p>Now you've got projects, impact, and estimates.  The last input we need
+for a plan is an understanding how much the team can accomplish.
+Having historical velocity to calibrate against is best, but in the absence of
+that you can get by with taking the number of staff-weeks available on your team
+and applying a consistent haircut for things like PTO, on-call, and
+high-priority small tasks.</p>
+
+<p>If you want to more accurately assess team capacity, Steve McConnell's <a
+    href="https://www.amazon.com/Software-Estimation-Demystifying-Developer-Practices/dp/0735605351">Software
+    Estimation: Demystifying the Black Art</a> has a number of good techniques.</p>
+
+<h2>Step 5: Establish your overall plan</h2>
+
+<p>Now we have all the inputs into our plan, the last step is to actually make
+it.  The simplest way to do this is to start filling up your team's queue with
+the "best" projects (probably defined as highest impact-effort ratio) until the
+sum of their high estimates is equal to team capacity.  These are your "green"
+projects: the ones you'll plan around for the quarter.</p>
+
+<p>Then, keep stack-ranking the remaining projects until the sum of their
+low-estimates equals the team's capacity.  These are your "yellow" projects; the
+ones you'll work on if things go well, but will get cut depending on how the
+quarter goes.</p>
+
+<p>Finally, you'll have a bunch of projects that don't make the cut.  These are
+"red" projects, and they just won't happen this quarter unless something
+changes.</p>
+
+<p>After this step, you should have something that looks like <a
+                                                                  href="https://docs.google.com/spreadsheets/d/1A_kiYX1x4mUVD4kiCEuw22xe2YcyhVFJ4M2hjnUdmo8/edit#gid=7959846">the
+                                                                  third sheet in
+                                                              our example.</a>
+</p>
+
+<h2>Step 6: Sanity check with a Gannt Chart</h2>
+
+<p>Once we have a plan, I like to check the results by making a quick <a
+    href="https://en.wikipedia.org/wiki/Gantt_chart">gannt chart.</a> The
+purpose of this is sanity check your assumptions and look for anything you'll
+need to plan around, <em>not</em> to make a strict
+schedule you'll follow for the quarter.  It will probably accurately reflect
+your team's work over the next ~4-6 weeks, but will become more speculative
+after that.</p>
+
+<p>After adjusting your gannt chart for things like deadlines and staffing
+    requirements, you'll end up with something like <a
+    href="https://docs.google.com/spreadsheets/d/1A_kiYX1x4mUVD4kiCEuw22xe2YcyhVFJ4M2hjnUdmo8/edit#gid=769496698">the
+    final sheet in our example spreadsheet.</a> Congratulations, you've got a quarterly plan!</p>
+
+<h2>Step 7: Share a narrative of your plan</h2>
+
+<p>Now that you've got a plan, chances are other people in your company will
+care about it.  You could share the spreadsheet you used to make the plan, but
+that's not easily digestible.  Instead, you'll probably want to
+turn your plan into a narrative document.  There are lots of ways
+to do this, but I like to follow Guarav Oberoi's <a
+                                                     href="https://goberoi.com/on-writing-product-roadmaps-a4d72f96326c">Medium
+                                                     post on building product
+                                                 roadmaps</a> as a default
+                                             approach.  His process for getting
+                                             to a roadmap is slightly different,
+                                             but the end product can be
+                                             identical.</p>
+
+<p>Sharing this out in a narrative format can also help other teams understand
+what you're accomplishing and allow them to easily give feedback if you're
+missing any assumptions.</p>
+
+<h2>What are the strengths and weaknesses of this approach?</h2>
+
+<p>Overall I've found this approach to be effective for understanding what a
+team of ~4-8 people can build over a ~3 month time horizon, which makes it
+perfect for quarterly planning for a feature team where you don't need
+crystal-clear accuracy over for the quarter.</p>
+
+<p>At the same time, this approach isn't a panacea.  In particular, it has a few
+limitations: 
+    <ul> 
+        <li> It hand-waves over external dependencies.  This means that if
+            you're in an environment where you have a lot of dependencies, you
+            may want a broader process similar to this <a
+            href="https://firstround.com/review/the-secret-to-a-great-planning-process-lessons-from-airbnb-and-eventbrite/">"W-shaped"</a>
+            approach.  If nothing else, it makes sense to follow Guarav's advice
+            of making sure to call out dependencies as a risk in your
+            narrative.</li> 
+        <li>It doesn't give super accurate estimates or
+            clear project plans, especially if you estimate with t-shirt sizes.
+            I've found this to be mostly fine since our main goal
+            with this process is to establish "what work can we plausibly do",
+            not a perfect schedule.  Once we've established the work we
+            can take on, then we can start to manage individual projects
+            and create a more accurate schedule.
+        </li> 
+        <li>It starts to break down past ~3 months.  The lack of dependency
+            tracking and rough estimation approaches means this is fine for ~1
+            quarter, but not much further than that.  If
+            you need planning past the quarter-level, consider other
+            approaches.
+        </li> 
+    </ul> 
+</p>
+
+<p>In spite of these limitations, I've found that running this process is a
+great way to cut through ambiguity and get a quarterly plan pretty quickly.
+It's my default tool when I need to run a planning process, and would recommend
+it to others who are just getting started with quarterly planning.</p>
+
+<p><em>This post was made way better thanks to feedback from <a
+                                                                 href="http://poros.github.io/">Antonio
+                                                                 Verardi</a></em></p>
