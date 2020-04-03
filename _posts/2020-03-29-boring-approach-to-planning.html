@@ -10,40 +10,56 @@ of possibilities to get to a commitment.  Fortunately, I've found that a default
 approach can help you answer these questions reasonably quickly and with minimal
 overhead.</p>
 
+<p>Before going further, I've created an example of this process for a
+theoretical food delivery company in <a
+                                                                        href="https://docs.google.com/spreadsheets/d/1A_kiYX1x4mUVD4kiCEuw22xe2YcyhVFJ4M2hjnUdmo8/edit#gid=0">this
+                                                                        spreadsheet.</a>
+Take a few minutes to review that before reading the rest.</p>
+
+<p>Have you read through the spreadsheet?  Great. Let's move into the
+details.</p>
+
 <h2>Step 1: Figure out your goals</h2>
 
-<p>Before you go figuring out what your team should build, you need to figure
-out what your goals are.  In Silicon Valley, this frequently looks like defining
-OKRs, but any goal setting framework will do.  What's important is that you have
-some yardstick you can use to measure the impact of possible projects.</p>
+<p>Before you go figuring out what to build this quarter, what you're trying to
+achieve.  In Silicon Valley, this frequently looks like defining OKRs, but any
+goal setting framework will do.  What's important is that you have some common
+yardstick to measure each project's impact and prevent the loudest opinion from
+dictating what the team will work on.</p>
+
+<p>If you're not sure how to get started with setting good goals, <a
+    href="https://upraise.io/blog/writing-effective-okrs/">this blog post is a
+    good place to get started.</a>
 
 <h2>Step 2: Make a list of projects to achieve and their impact</h2>
 
 <p>Once you have your goals, the next step is to write down all your possible
 projects and their impact. In the interest of keeping the list manageable, a
-"project"  is something that will take >= 2 staff-weeks of work. Most of these
+"project"  is something that will take > 1 staff-weeks of work. Most of these
 will be user-facing features, but you also want to collect engineering-focused
 projects here.</p>
 
-<p>Each of these projects should include a three things: a short description of
-the must-have, a description of nice-to-have features and a description of its
-impact. As much as possible, the engineering and product-focused projects should
-describe impact should be in the language of the goals defined in step 1.  This
-will help make sure that all projects are prioritized on equal terms.</p>
+<p>Each of these projects should include a two things: a short description of
+the requirements and a description of its impact. As much as possible, the
+engineering and product-focused projects should describe impact should be in the
+language of the goals defined in step 1.  This will help make sure that all
+projects are prioritized on equal terms.</p>
 
 <h2>Step 3: Put Estimate ranges on all projects</h2>
 
 <p>Once you have a list of projects and their impact, the next step is to put
-estimates on them.  There are a variety of ways you can do this, but in general,
-    I've found that having the people close to the eventual work give <a
+estimates on them.  There are a variety of ways you can do this but, I've found
+    that having the people close to the work give <a
         href="https://explainagile.com/blog/t-shirt-size-estimation/">t-shirt
-        sized estimates</a> is a good approximation.  This gives a "good enough"
-    set of estimate ranges and it can be done pretty quickly.</p>
+        sized estimates</a> is sufficient for this process. T-shirt sizes give
+    good-enough estimates, and can be assigned fairly quickly.</p>
 
-<p>If you need more accurate estimates, it's worth reading Steve McConell's <a
-    href="https://www.amazon.com/Software-Estimation-Demystifying-Developer-Practices-ebook/dp/B00JDMPOVQ">Software
-    Estimation: Demystifying the Dark Art</a> for a full list of techniques you
-can use.</p>
+<p>At this stage, you'll also want to allow for a little bit of push-and-pull on
+requirements.  If there are ways to deliver a subset of the project at a
+fraction of the cost, you'll want to surface that now so that you can
+incorporate that in later stages of planning.  However, you don't want to
+negotiate over specific requirements at this stage, as that can quickly become a
+time-sink.</p>
 
 <h2>Step 4: Figure out your capacity</h2>
 
@@ -54,8 +70,10 @@ absence of that you can get by with taking the number of staff-weeks available
 on your team, and applying a consistent haircut for things like PTO, on-call,
 and high-priority small tasks.</p>
 
-<p>Again, Steve Mconnell's book has a ton of great approaches you can use
-depending on your team and projects.</p>
+<p>Steve McConnell's <a
+    href="https://www.amazon.com/Software-Estimation-Demystifying-Developer-Practices/">Software
+    Estimation: Demystifying the Black Art</a> has a number of good techniques
+if you want to more accurately assess team capacity.</p>
 
 <h2>Step 5: Establish your overall plan</h2>
 
@@ -67,8 +85,8 @@ their the sum of their high estimates is equal to team capacity.  These are your
 
 <p>Then, keep stack-ranking the remaining projects until the sum of their
 low-estimates equals the team's capacity.  These are your "yellow" projects; the
-ones you'll work on if things go well, but will get cut depending on how well
-you deliver your other projects.</p>
+ones you'll work on if things go well, but will get cut depending on how the
+quarter goes.</p>
 
 <p>Finally, you'll have a bunch of projects that don't make the cut.  These are
 "red" projects, and they just won't happen this quarter unless something
@@ -76,14 +94,78 @@ changes.</p>
 
 <h2>Step 6: Sanity check with a Gannt Chart</h2>
 
-<p>Once we have a plan, I like to sanity check the approach by making a quick
-<a href="https://en.wikipedia.org/wiki/Gantt_chart">Gannt chart.</a>  This
-version of a gannt chart is intentionally low-resolution, but it serves to
-sanity check your assumptions.  For example: are your projects super heavy on FE
-needs this quarter, so you'll need to make sure to manage risks around your
-senior FE engineers' projects?  Those types of questions don't come out when
-just stack ranking numbers, but when you plot the projects out, you can quickly
-see problematic patterns.</p>
+<p>Once we have a plan, I like to sanity check the approach by making a quick <a
+                                                                                  href="https://en.wikipedia.org/wiki/Gantt_chart">Gannt
+                                                                                  chart.</a>
+                                                                              This
+                                                                              version
+                                                                              of
+                                                                              a
+                                                                              gannt
+                                                                              chart
+                                                                              is
+                                                                              intentionally
+                                                                              low-resolution,
+                                                                              but
+                                                                              it
+                                                                              serves
+                                                                              to
+                                                                              sanity
+                                                                              check
+                                                                                  your
+                                                                                  assumptions.
+                                                                                  For
+                                                                                  example:
+                                                                                  are
+                                                                                  your
+                                                                                  projects
+                                                                                  super
+                                                                                  heavy
+                                                                                  on
+                                                                                  FE
+                                                                                  needs
+                                                                                  this
+                                                                                  quarter,
+                                                                                  so
+                                                                                  you'll
+                                                                                  need
+                                                                                  to
+                                                                                  make
+                                                                                  sure
+                                                                                  to
+                                                                                  manage
+                                                                                  risks
+                                                                                  around
+                                                                                  your
+                                                                                  senior
+                                                                                  FE
+                                                                                  engineers'
+                                                                                  projects?
+                                                                                  Those
+                                                                                  types
+                                                                                  of
+                                                                                  questions
+                                                                                  don't
+                                                                                  come
+                                                                                  out
+                                                                                  when
+                                                                                  just
+                                                                                  stack
+                                                                                  ranking
+                                                                                  numbers,
+                                                                                  but
+                                                                                  when
+                                                                                  you
+                                                                                  plot
+                                                                                  the
+                                                                                  projects
+                                                                                  out,
+                                                                                  you
+                                                                                  can
+                                                                                  quickly
+                                                                                  see
+                                                                                  problematic
+                                                                                  patterns.</p>
 
 <p>If you see something scary, tweak your plan slightly until you're happy with
 the results. Congratulations, you've got a quarterly plan!</p>
@@ -94,11 +176,14 @@ the results. Congratulations, you've got a quarterly plan!</p>
 care about it.  You could share out the spreadsheet you use to stack rank
 projects, but that's not easily digestible.  Instead, you'll probably want to
 turn your plan into some kind of a narrative document.  There are lots of ways
-   to do this, but I like to follow Guarav Oberoi's <a
-       href="https://goberoi.com/on-writing-product-roadmaps-a4d72f96326c">Medium
-       post on building product roadmaps</a> as a default approach.  His process
-   for getting to a roadmap is slightly different, but the end product can be
-   identical.</p>
+to do this, but I like to follow Guarav Oberoi's <a
+                                                     href="https://goberoi.com/on-writing-product-roadmaps-a4d72f96326c">Medium
+                                                     post on building product
+                                                 roadmaps</a> as a default
+                                             approach.  His process for getting
+                                             to a roadmap is slightly different,
+                                             but the end product can be
+                                             identical.</p>
 
 <p>Sharing this out in a narrative format can also help other teams understand
 what you're accomplishing and allow them to easily give feedback if you're
@@ -110,30 +195,28 @@ missing any assumptions.</p>
 team of ~4-8 people can build over a ~3 month time horizon, which makes it
 perfect for quarterly planning for a feature team.  It won't give you perfect
 results, but once you've defined goals you can get a reasonable plan in 1-2
-weeks of intermittent work.</p>
+weeks.</p>
 
 <p>At the same time, this approach isn't a panacea.  In particular, it has a few
 limitations: 
 
-    <ul> 
-        <li>
-            It hand-waves over external dependencies.  This means that
-        if you're in an environment where you have a lot of complex
-        dependencies, you may need a more formal planning process.  If nothing
-        else, it makes sense to follow Guarav's advice of making sure to call
-        out dependencies as a risk in step 6.  
-        </li> 
-        <li> 
-            It doesn't give super
-        accurate estimates, especially if you estimate with t-shirt sizes.  I've
-        found that's mostly-fine for my use-cases, but could be an issue
-        depending on your environment.  
-        </li> 
-        <li> It starts to break down past ~3
-        months.  The lack of dependency tracking and estimate rigor means this
-        is fine for ~1 quarter, but it means that your more distant estimations
-        will likely be more wrong.  If you need clear planning past the
-        quarter-level, consider other approaches.  
-        </li>
-</ul> 
-</p>
+    <ul> <li> It hand-waves over external dependencies.  This means that if
+            you're in an environment where you have a lot of dependencies, you
+            may want a broader process similar to this <a
+                                                           href="https://firstround.com/review/the-secret-to-a-great-planning-process-lessons-from-airbnb-and-eventbrite/">"W-shaped"</a>
+            approach.  If nothing else, it makes sense to follow Guarav's advice
+            of making sure to call out dependencies as a risk in your
+            narrative.</li> <li> It doesn't give super accurate estimates or
+            clear project plans, especially if you estimate with t-shirt sizes.
+            I've found that's mostly-fine for my use-cases, But it means that
+            you'll need to have a separate plan to actually deliver projects and
+            control schedules.  </li> <li> It starts to break down past ~3
+            months.  The lack of dependency tracking and estimate rigor means
+            this is fine for ~1 quarter, but it means that your more distant
+            estimations will likely be more wrong.  If you need clear planning
+            past the quarter-level, consider other approaches.  </li> </ul> </p>
+
+<p>In spite of these limitations, I've found that running this process is a
+great way to cut through ambiguity and get a quarterly plan pretty quickly.
+It's my default tool when I need to run a planning process, and would recommend
+it to others who are just getting started with quarterly planning.</p>
