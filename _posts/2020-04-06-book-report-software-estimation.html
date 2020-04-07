@@ -1,0 +1,168 @@
+---
+layout: post
+title: Book Report on Software Estimation - Demystifying the Dark Arts 
+---
+
+<p>I recently finished reading Software Estimation: Demystyfying the Dark
+Arts.  I picked it up after I made a few particularly incorrect estimates at
+work and resolved to avoid those issues going forward.  The book regularly hits
+on a few common themes, an this post will attempt to summarize them.</p>
+
+<h2>Estimates vs. Targets vs. Commitments</h2>
+
+<p>The book starts off by talking about three types of dates that often get
+confused:</p>
+<ul>
+    <li><b>Commitments</b> are dates that you have told external
+        stakeholders that something will be ready.  This could be a public
+        launch, a demo for a customer, or an internal milestone.</li>
+    <li><b>Targets</b> are goals that you're trying to hit by a date.  They could
+        be directly related to functionality you're trying to
+        deliver, or they could be a metric that you're trying to move by a
+        particular amount.</li>
+    <li><b>Estimates</b> are analytically derived statements about how
+        long a team thinks a it will take to deliver a set of functionality.
+    </li>
+</ul>
+
+<p>McConnell points out that we often confuse these things, and it results in
+poor collaboration between business stakeholders and software engineers.  For
+example, if the team has a target to deliver a feature by the end of the
+quarter, but the team estimates that the feature will take longer than a quarter
+to deliver, one of the first reactions is to negotiate the estimate.</p>  
+
+<p>This is the wrong approach.  The only reason to disagree over <em>the
+    estimate</em> is because you believe the underlying methodology is
+flawed. A better approach is to understand the underlying goal of the
+target/commitment and see if there's a better way to reach that in a way
+that gives a lower estimate.  Barring that, you may decide to accept the risk of
+having an agressive target and mitigate the risk in some way.  All of these are
+acceptable options, but very few involve negotiating over the estimate
+itself.</p>
+
+<h2>Count, Compute, Judge</h2>
+
+<p>Once that difference is established, the book moves on to discuss how to
+produce accurate estimates.  McConnell proposes a simple approach for this:
+count, compute, judge.</p>
+
+<p>Count, compute, judge states that the first step in an estimation process
+should be to count something that can help you understand the size of your
+deliverable. Ideally you count lines of code for reasons we'll discuss later,
+but failing that you can anything that's correlated with the size of what you're
+building.  This could be number of screens you're updating,
+number of endpoints you'll need to create, or number of reports you'll need to
+generate.</p>
+
+<p>The reason you count as a first step is that it's the least biased form of
+estimation.  People can quibble with how hard they think something will be, but
+they can't quibble with the fact that you will be producing N new UI widgets and
+create M new classes.</p>
+
+<p>Once you've counted something, the next step is to compute an estimate from
+that.  If you have a feature that requires 6 new screens, 3 new API endpoints,
+and updates to 2 existing API endpoints, then you may assume that each screen
+takes 3 staff weeks, a new endpoint takes 2 staff weeks, and updates to existing
+endpoints take 1 staff weeks.  This would mean that you estimate <pre>
+6 * 3 + 3 * 2 + 2 * 1 = 25 total staff weeks.
+</pre>. When choosing the co-efficients for your computation, one of the best
+indicators of how long something will take is past duration, so you'll want to
+use historical data as much as possible.</p>
+
+<p>McConnell argues that you should only use judgement as a last resort because
+it's riddled with all sorts of biases.  Depending on where you are in a project,
+you may need to lean more on judgement than other areas, but at best it's only
+a small input to the computation.</p>
+
+<h2>Estimating in Ranges</h2>
+
+<p>It can be easy to results of this computation as The Estimate, which has a
+single value, but that would be flawed.  Sometimes stuff goes way faster than
+we expect, more often it takes longer.  Your estimates need to account for
+that by estimating in ranges.</p>
+
+<p>Estimating in ranges is simple.  Instead of creating a single estimate
+through count, compute, and judge, you create a best case, a
+worst case, and expected case.  This allows you to say things like "The project
+will take between 15 and 45 staff weeks, with an expected effort of 25 staff
+weeks.  If we can find a lot of code re-use and the project gets fully-staffed
+we can get closer to the low-end, but if the design mocks turn out to be
+really novel we are at risk of hitting the upper end."  This type of description
+gives decision makers all the information they need to quickly make an informed
+and accurate decision.</p>
+
+<p>It's also useful to note that estimate ranges don't need to be symmetric
+around the expected value.  In our example above, our best case was 10
+staff-weeks lower than the expected case, but the worst case was 20 staff-weeks
+higher.  That's okay.  What matters is that you used the correct inputs into the
+estimation process.</p>
+
+<h2>The Cone of Uncertainty</h2>
+
+<p>All of these ideas are tied into one of the most common themes in the book:
+The Cone of Uncertainty. </p>
+
+<img src="/images/Cone_of_Uncertainty.jpg" alt="The cone of uncertainty
+represents the amount of uncertainty in various stages of a project."/>
+
+<p>The Cone is a visual representation of the fact that at the beginning of a
+project you have very little information, which means that your estimates are
+very uncertain.  As the project progresses you gain information and increased
+certainty until it is finally delivered.</p> 
+
+<p>First, it means that at the beginning of a project you can probably only make
+count very coarse grained things, and your best + worst cases may be wildly
+different.  After all, how can you accurately say how long it will take to build
+a UI if you only have sketchy wire-frames?  The best way to capture this
+uncertainty is to make sure your estimate ranges are sufficiently wide at the
+beginning of a project.  Once you get more clarity on the work, you can progressively refine this estimate.</p>
+
+<p>The other implication of The Cone is that you want to use different
+estimation strategies for different parts of the project.  The book outlines a
+number of strategies and their appropriate situation, but the general idea that
+you count very rough quantities to produce an estimate early on, but you may
+estimate a big list of individual tasks once the project has done a task
+breakdown.  In practice, this is why I like to use t-shirt sizes <a href="{%
+post_url 2020-04-05-default-approach-to-planning %}">for
+quarterly planning</a>, but would not use that once we've started a project.</p>
+
+<h2>Communicating Accuracy in Estimates</h2>
+
+<p>The last point that comes up frequently in McConnell's book is how to
+communicate the accuracy of estimates.  Frequently your process of counting +
+computating will give very accurate numbers, but your
+estimation method wasn't that accurate nearly enough.  You'll want to remove
+some of that accuracy when you present your estimates to avoid false confidence
+in your decisions.</p>
+
+<p>For example, let's say that you're early in a project, count the number of
+components left to build multiply by 7.25 staff days per component.  If you have
+23 components, that gives you 166.75 staff days of work.  If you tell someone
+that you have 166.75 staff days remaining, they'll say "gee, it sounds like
+Maltz has really done his homework.  He's working with 2 other engineers, so I
+should expect that in exactly 8 weeks."</p>
+
+<p>This is not good.  Slipping by 4-5 days on that estimate will seem like a
+miss, even though that's still totally reasonable when you're 8 weeks out.  You
+can avoid this by doing two things.</p>
+<p>
+<ul>
+    <li>
+        Remove significant digits.  166.75 Staff days reads different than 167
+        staff days, which is different still from 175 staff days.  By removing
+        some digits of accuracy, you can more appropriately manage others'
+        expectations of how your estimate's accuracy.
+    </li>
+    <li>Change the units you estimate in.  If you estimate down to the day,
+        people will assume you're controlling the project down to the day.  If
+        your units are weeks, or months, people will assume less fine-grained
+        control and have appropriate expectations.  In our example above,
+        changing 166.75 staff days may be better estimated as 7 staff months.
+    </li>
+</ul>
+</p>
+
+<p>These are only some of the insights from Software Estimation: Demystifying
+the Dark Arts.  The book is filled with useful tactics for estimation strategies
+and tactics.  If you're interested in improving your estimation skills, it's
+well worth the price tag.</p>
