@@ -1,0 +1,194 @@
+---
+layout: post
+title: Running Design Sprints for Engineering Teams
+---
+
+<p>Sometimes engineering teams find themselves in a situation where they're
+tackling a cross-functional problem with no clear path forward. In these cases
+it can be challenging for individual teams to break out of their silos and see
+the global problems, resulting in local optimization while the larger problem
+remains unsolved.  Fortunately, teams can follow the structured process of a <a
+href="https://gv.com/sprint">design sprint</a> to cut through these problems and
+quickly forge a path forward.</p> 
+
+<h2>What's a Design Sprint?</h2>
+
+<p>Design sprints are 5 day exercises which product teams can use to tackle an
+ambiguous problem.  Sprints follow a structured process of rapidly gathering
+context, ideating on approaches, picking a direction, and putting a prototype in
+front of users.  This allows teams to turn weeks of debate into lessons from
+users.</p>
+
+<p>Engineering teams generally don't need this whole process, but they can steal
+the first two steps: rapid context gathering and ideating on approaches, to
+quickly find a path forward for cross-functional problems.  All that's required
+is you follow a structured approach to problem solving.</p>
+
+<h2>Day 0: Have a Facilitator Do Some Legwork</h2>
+
+<p>Before you try to run a sprint, you'll need a facilitator.  The facilitator
+will act as a guide through the process and ensure that the process moves
+towards a workable conclusion.</p>
+
+<p>A good facilitator will have enough context on the problem to guide the
+discussion, but they <em>should not</em> be someone who needs to actively
+participate in the sprint. Facillitating for 6 hours a day is a full-time job,
+and trying to both facillitate and participate is a recipe for
+doing neither thing well.  This makes it a good chance for someone to <a
+                                                                             href="https://lethain.com/getting-in-the-room/">get
+                                                                             into
+                                                                            the 
+                                                                         room</a>
+with decision makers by providing a much-needed skill.</p>
+
+<p>The facilitator has a few jobs leading up to the sprint:</p> 
+<ul> 
+    <li>They need to a consistent room
+            for ~8-10 people for 2 days straight. They'll also need to make sure
+            it's <a
+                     href="https://www.fastcompany.com/3028471/google-ventures-your-design-team-needs-a-war-room-heres-how-to-set-one-up">appropriately
+                     setup.</a>  Finding a conference room that fits this
+                 profile isn't easy, so it's one of the first things the
+                 facilitator should do.</li>
+    <li>They
+        need to identify 4-6 people who will be actively participating.  These
+        people should be
+        experts in their area, have enough knowledge to understand the domains
+        of other sprinters, and be in a position to push forward prioritization
+        of any requisite work post-sprint.</li> 
+    <li>They need to set a schedule of lightning talks and create a consistent slide deck for people to
+                 present from. A consistent slide deck may seem like overkill,
+                 but it will make sure that the lightning talks on day 1 answer
+                 the right questions.</li> 
+    <li>They need to 
+                 purchase <a href="https://www.thesprintbook.com/supplies">all
+                 necessary supplies</a></li> 
+    <li>They will need to write a sprint brief explaining the problem the team is solving.</li>
+</ul>
+
+<p>The facilitator will also be responsible for sharing and enforcing the No
+Distractions Policy.  This means they'll kindly, but firmly, tell people that
+they need to leave their phones at the door and not check Slack/email while
+they're in the sprint room.  They're welcome to leave at any time to attend to
+something, but they just need to do it outside the room.</p>
+
+<p>This is a lot of logistical legwork, but it's important.  This will use ~2
+engineering weeks of time, and it's their responsibility to make sure it is well
+spent.  Once all of these pieces are in place, it's time to move to day 1.</p>
+
+<h2>Day 1: Lightning Talks To Build Context</h2>
+
+<p>The first day of the sprint is focused on breaking participants out of their
+local context and giving them a global view of the problem.  This is accomplished
+with a day of lightning talks covering the problem space.</p>
+
+<p>Lightning talks are ~15 minute talks which explain particular team interacts
+with the sprint's problem. For example, if the problem is "how
+can we reduce number of bugs we ship", you may have a lightning talk from
+an application team discussing how they test for bugs, and a release engineering
+team talking about how code gets released to production.  The facilitator
+should also include talks from relevant non-technical teams like support or
+product management to ensure that sprinters have a well-rounded view of the
+problem. All told, you'll probably have ~10-12 lightning talks.</p>
+
+<p>During each talk sprint participants should capture opportunities through
+<a href="https://www.designkit.org/methods/3">how might we (HMW)</a> statements
+on post-it notes. Each of these statements will describe an aspirational
+question the team may want to solve based on that lightning talk.  After each
+talk, participants will put these up on a shared surface. 
+This will serve as the basis for discussion on day 2.</p>
+
+<p>By the end of day 1 you should have a whiteboard filled with problem
+statements and a team that is now appropriately level-set.  Day 2 will be about
+digesting those and making them actionable.</p>
+
+<h2>Day 2: Digest to problem statements</h2>
+
+<p>Day 1 was all about collecting a variety of problem statements; day 2 is
+about synthesizing the global problems.  The team accomplishes this by grouping,
+ranking, and driving towards <a href="https://tools.ietf.org/html/rfc7282">rough
+consensus</a> on problem statements.</p>
+
+<p>The first step in day 2 is to group the HMW statements from day 1 into
+themes.  This doesn't need to follow rigid guidelines, but you'll want to
+physically co-locate similar problems together.  Grouping will likely reveal a few
+large clusters and a number of smaller satellites.  The facilitator then should give
+everyone voting stickers and have them vote on the HMWs they feel are
+most impactful, allowing duplicate votes if they feel strongly about a topic.
+This whole process will take ~1 hour and it will reveal a heat map of ideas the
+team feels are the most valuable.</p>  
+
+<p>The facilitator should take this map and find 3 distinct
+areas for participants to dig into.  These problems should be the ones that
+got the most votes and cut across engineering teams. This will leave out
+impactful problems which are the domain of a single team. That's okay; if a team
+already owns a particular problem, their internal processes can likely solve
+that problem.</p>
+
+<p>Once the facilitator has identified areas, they should spend ~30 minutes
+on each problem getting the participants to distill it down into a problem statement which
+everyone can roughly agree on.  For example, if you saw statements like "how
+might we allow developers to test on real data?" and "how might we prevent bugs
+which only show up on production infrastructure?" you may work with the team to
+distill that down to "how might we allow developers to safely test their code in
+a prod-like environment?"  This problem statement succinctly captures a global
+problem which otherwise may have fallen between teams.</p>
+
+<p>Getting perfect consensus will likely be impossible, but if you can get
+something that people can accept for each problem area, that's a big win. Even
+if you can't, understanding what's blocking a crisp statement is a big win</p>
+
+<p>Achieving this rough consensus will take the better part of a day, and will
+likely leave everyone's brain pretty fried.  You'll want to spend the last bit
+of day 2 wrapping up finding any next steps to start making progress on these
+problems.</p>
+
+<h2>Day 3 -> Onward: Driving Forward Results</h2>
+
+<p>The two days of sprinting are intense, but they're also only the beginning.
+They've produced a set of problem statements, but now they need to get solved.
+Solutioneering is it's own can of worms, but there are a few things you can do
+to set yourself up for success.</p>
+
+<p>First is the facilitator should broadly circulate notes + takeaways to a
+wide group of relevant stakeholders.  This serves two purposes:</p>
+
+<ul> <li>It starts to socialize these problems, so that the wider team can start
+        to form a more global problem understanding.</li> <li>It helps make sure
+        that you didn't make any big errors. You don't need total agreement on
+        the problem statements, but you want to make sure you
+        aren't making egregious errors.</li> </ul>
+
+<p>You should also appoint a <a
+    href="https://about.gitlab.com/handbook/people-group/directly-responsible-individuals/">directly
+    responsible individual</a> to drive forward solutions.  This person will be
+    responsible for making the <a
+                                   href="https://www.youtube.com/watch?v=-JV5cyxS31Q">impossible
+                                   decisions</a> involved in turning problem
+                               statements into concrete proposals for solving
+                               any problems.  They will work with teams to build define <a href="{%
+                               post_url 2019-04-21-roadmaps-vs-projects %}">roadmaps and projects</a> as required,
+and then ultimately <a href="{% post_url 2019-11-27-getting-decisions-made %}">
+    getting those ideas prioritized</a> to deliver solution.
+
+<h2>Where is this not the right idea?</h2>
+
+<p>Running this type of sprint is a great way to get a bunch of shared
+context and kickstart problem solving, but it's also time-consuming, so you
+don't want to use it in every case. In particular, you probably don't want to use it if:</p>
+
+<ul> <li>You already have a reasonable idea of how to solve a problem, but you
+        need to explore its edges.  In that case you may be better served by
+        building a prototype or running a hackathon.</li> <li>A number of people
+        understand the problem, but it's still not moving forward.  A lack of
+        collaboration may not be your biggest problem here, you may have
+        underlying organizational issues that need fixing.</li> <li>You aren't
+        confident that you can get a DRI responsible for driving solutions. If
+        you don't have the ability to execute, all of the brainstorming in the
+world won't help you.</li> </ul>
+
+<p>However, if your problem does fit the mold of "we need to get people talking
+and brainstorming", running this process can be a great way to cut through the
+challenges of cross-team collaboration.  It won't immediately produce a
+solution, but it will quickly give you enough to get started, and that be half
+the battle.</p>
