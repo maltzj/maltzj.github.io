@@ -1,0 +1,138 @@
+---
+layout: post
+title: Communicating through uncertainty
+---
+
+<p>Recently I've found myself in situations where there's no right answer.  In
+these situations it can be hard to know how to proceed.  Even when you do make
+some decision, it can be hard to communicate that to a team with confidence.
+I've recently been watching some great leaders do this, and I've found that
+doing it well boils down to a few simple steps.</p>
+
+<p>Good communication through ambiguity does the following.
+<ul>
+    <li>It makes it clear that a decision has been made</li>
+    <li>It makes it clear that trade-offs have been considered</li>
+</ul>
+
+<h2>It makes it clear that a decision has been made</h2>
+
+<p>One of the biggest challenges of uncertain situations is making it clear that
+the team has committed to <em>some path</em>.  Often there are lots of different
+approaches, and some debate about what the correct path is.  Good comms in these
+situation make it clear that the debate phase has stopped and the execution
+phase has begun.  Rands talks about this effectively in <a
+                                                            href="https://randsinrepose.com/archives/mandate-dissect/">his
+                                                            article on mandate dissection.</a></p>
+
+<h2>It makes it clear that all angles have been considered</h2>
+
+<p>Ambiguous decisions will naturally leave some people unhappy. For many, their
+natural reaction will be "X just doesn't understand this problem" or even worse
+"X is actively out to make my life hard", which can lead to lower trust.  Good
+communication about these decisions will make it clear that all the angles have
+been considered when deciding on this path.</p>
+
+<h2>It says when + how the decision will be evaluated</h2>
+
+<p>Oftentimes working through ambiguity is an exercise in running experiments
+and seeing the results.  Good communication about decisions in these situations
+recognizes this by describing the decision and saying when + how it will be
+evaluated.  This again helps to build trust, and gives an easy path for people
+who disagree: if the chosen approach turns out wrong, they'll have more data to
+advocate for a different approach.</p>
+
+<h2>It follows-up</h2>
+
+<p>Once the decision has been made and it's been evaluated, it's important to
+follow-up with the results and next steps.  This serves two
+benefits.  First, it prevents you from <a
+                                           href="https://m.signalvnoise.com/dont-scar-on-the-first-cut/">scarring
+                                           on the first cut</a> and accidentally
+                                       encoding an ineffective decision as permanent
+                                       policy.  Secondly, it builds trust 
+                                       so that when you suggest
+                                       future experiments, people can trust that
+                                       you're not acidentally making a trap-door
+                                       decision.</p>
+
+<p>Depending on the impact of your decision, it may be useful to follow-up
+midway, just to let people know that concerns are being heard and small course
+corrections are being taken.</p>
+
+<h2>An Example</h2>
+
+<p>To think about how that works in practice, let's consider a common problem.
+Your team has started shipping more bugs to production.  Lots of people have
+theories about how to fix this, ranging from hiring a QA team to just shrugging
+their shoulders and saying "bugs are a fact of life".  You have decided to try
+to resolve this by putting a pre-commit hook which ensures that code coverage is
+about 50% for any new pull request.  Let's look at how to message that, starting
+first with the simplest message.</p>
+
+<p><em>Hey team, just wanted to give everyone a heads up that starting Monday
+    we'll block any pull request which has less than 50% code coverage on any
+    change.  Hopefully this will decrease the amount of bugs we ship to
+    production.</em></p>
+
+<p>This is a fine approach, and it scores well on making it clear that a
+decision has been made.  At the same time, you can imagine the critiques: "code
+coverage is a terrible metric", "this will never decrease our bug rate fast
+enough".  Let's think about how to resolve that.</p>
+
+<em>
+    <p>Hey team, as I'm sure you've noticed, our bug rate has been creeping up
+    over the past month, and we've had to roll back a number of our changes in
+    production to prevent serious impact to our users.  That's why starting
+    Monday we're going to require that all changes have > 50% code coverage
+    before merging.</p>
+
+    <p>We recognize that code coverage isn't a perfect metric for making sure
+    that our changes are high-quality, but we chose this approach because it's
+    something which is fairly quick for us to instrument, and it will allow us
+    to quickly understand the impact of more rigorous testing standards on our
+    development process. This will make it harder to get
+    changes into production, but we have seen that most of our production
+    incidents could've easily been caught by testing, so we believe that by
+    explicitly encoding a minimum testing bar, it can be a good first step to
+    prevent a large class of errors.</p>
+</em>
+
+<p>This is way better.  It explicitly shows people that you've considered the
+trade-offs, and you've deliberately chosen a set of reasoned trade-offs.  We can
+make that even better by clearly framing this as an experiment.</p>
+
+<em>
+    <p>Hey team, as I'm sure you've noticed, our bug rate has been creeping up
+    over the past month, and we've had to roll back a number of our changes in
+    production to prevent serious impact to our users.  That's why starting
+    Monday we're going to a trial where we require all changes to have > 50% code coverage
+    before merging.</p>
+
+    <p>We recognize that code coverage isn't a perfect metric for making sure
+    that our changes are high-quality, but we chose this approach because it's
+    something which is fairly quick for us to instrument, and it will allow us
+    to quickly understand the impact of more rigorous testing standards on our
+    development process. This will make it harder to get changes into
+    production, but we have seen that most of our production incidents could've
+    easily been caught by testing, so we believe that encoding a minimum testing
+    bar can be a good first step to prevent a large class of errors.</p> 
+
+    <p>As with all things, we're treating this as an experiment.  We'll let this
+    policy run for 4 weeks, and then check the number of bugs in production and
+    talk to some developers to see how it's impacting your workflow.</p>
+
+    <p>If you have any questions, please let me know.</p>
+</em>
+
+<p>This final version does everything that the first two do: it clearly
+communicates the trade-offs and makes it clear that a decision is being made.
+It also frames the change as an experiment, which makes it feel much more
+reversible and prevents some amount of re-litigating the issue from people who
+disagree.</p>
+
+<p>This approach isn't always perfect.  Sometimes you just need to make a
+decision and commit to it for the long term.  However, many times you can frame
+your ambiguous decisions as experiments and communicate about them accordingly.
+This will lead to happier teams, and hopefully less heart-burn as things
+change.</p> 
