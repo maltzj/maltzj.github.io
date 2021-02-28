@@ -1,0 +1,146 @@
+---
+layout: post
+title: Some Thoughts on Rules Engines 
+---
+
+
+<p>Spend enough time working with domain experts on a problem and someone is bound
+to say "we should build a rules engine to solve this problem."  Often this comes
+along with the goal of letting domain experts express rules themselves rather
+than having to evolve engineers.  However, once you start to dig into this
+problem you'll discover that "rules engine" can mean many different things to
+many different people.</p>
+
+<p>I've seen this problem a few times over the past couple of years, and I've
+come to think it's useful to break down your rules engine across a few important axes.
+Doing this will allow you to have clear discussions on what problems you need to
+solve and what you need to build to solve them.</p>
+
+<h2>The questions</h2>
+
+<ul>
+    <li>
+        <b>What data do your rules have access to?</b> Do your rules need to
+        arbitrarily grab data from a database, or are there a set of well-defined
+        features that people need to express their rules?
+    </li>
+    <li>
+        <b>When will your rules run?</b> Do they run on every request? When some
+        set of known events happen within your system? Whenever a data pipeline
+        kicks off?
+    </li>
+    <li>
+        <b>What actions will your rules take when they pass?</b> Do they just
+        need to output true/false, or do they need to output some more complex
+        actions?  If the latter, what do you do when a set of rules conflict?
+    </li>
+    <li>
+        <b>How complex are the rules you want to express?</b> Do you essentially
+        want to run arbitrary logic to match rules, or do you have a set of
+        simple if/else conditions that you need to follow?
+    </li>
+    <li>
+        <b>How do you want to express your rules?</b> Is abstractions in a
+        programming language okay?  Or do you need something simpler?
+    </li>
+</ul>
+
+<p>All of these taken together form a set of constraints for your rules engine.
+If you want to express arbitrary logic over arbitrary data, well then you're
+probably doing to need to write a <a
+                                      href="https://martinfowler.com/bliki/BusinessReadableDSL.html">business
+                                      readable DSL</a> or use something like <a
+href="https://www.drools.org/">drools</a>. If you can simplify across some
+dimension, you can probably save yourself some work .</p>
+
+<h2>Looking at this in practice</h2>
+
+<p>Let's think about how all this works in practice by using a few examples.</p>
+
+<h3>Radar from Stripe</h3>
+
+<p>Stripe's Radar product <a href="https://stripe.com/docs/radar/rules">has a rules
+engine</a> which allows merchants to configure how they should handle charges. It
+answers the above questions in the following ways:</p>
+
+<ul>
+    <li><b>What data do your rules have access to?</b> A constrained set of
+    features that Stripe provides.</li>
+    <li><b>When will your rules run?</b> On every charge to your business.</li>
+    <li><b>What actions will your rules take when they pass?</b> Block, allow,
+    review, or request 3DS for the charge. Conflicts are resolved by choosing
+    the first rule that decided on an action.</li>
+    <li><b>How complex are the rules you want to express?</b> Fairly simple, a
+    few if/else conditions.</li>
+    <li><b>How do you want to express your rules?</b> A simplified DSL that any
+    non-engineer can configure.</li>
+</ul>
+
+<p>This approach constrains users across almost every dimension, but the
+resulting rules engine is simple enough that almost anyone can use it.</p>
+
+<h3>FXL From Facebook</h3>
+
+<p>At the other end of the spectrum is <a
+href="https://www.facebook.com/notes/10158791577587200/">FXL</a>, a language
+that Facebook developed for fighting spam.  It has slightly different answers to
+these questions.</p>
+
+<ul>
+    <li><b>What data do your rules have access to?</b> "A Multitude". We don't
+        know for sure, but probably more than the O(10s) of features radar
+        allows.</li>
+    <li><b>When will your rules run?</b> Presumably something like "whenever a
+    content creation request comes in."</li>
+    <li><b>What actions will your rules take if they pass?</b> They may log
+    requests, block posts, or warn users. Other actions and conflict resolution
+    is undefined.</li>
+    <li><b>How complex are the rules you want to express?</b> Seems like they
+    can get quite complicated.</li>
+    <li><b>How do the rules get expressed?</b> A hand-rolled language called
+    FXL.</li>
+</ul>
+
+<p>FXL's rules engine gives users more power at the expense of some complexity.
+The rules are actual code rather than fancy configuration. This creates spam
+fighting superpowers at the price of it being harder for non-engineers to
+interact with write.</p>
+
+<h3>SQL-Based Rules Engines</h3>
+
+<p>Another common pattern is the SQL-based rules engine, which <a
+href="https://medium.com/@siddhesh.jog/an-sql-based-rule-engine-6a187e2d88d8">has an example
+here</a>.  The general idea of these is often "our domain-experts already
+understand SQL, so let's allow them to just write their rules in a language they
+know."  Again, this can fit into our framework.</p>
+
+<ul>
+    <li><b>What data do your rules have access to?</b> Anything in your
+    database.</li>
+    <li><b>When will your rules run?</b> Probably in response to a web request.
+    <li><b>What actions will your rules take if they pass?</b> Some set of
+    actions defined as stored procedures.  Resolution is again unclear.</li>
+    <li><b>How complex are the rules you want to express?</b> Not crazy simple,
+    but also not crazy complicated as well.  We could probably express some
+    pretty complex stuff in raw SQL if we needed to though.</li>
+    <li><b>Hwo do the rules get expressed?</b> SQL statements that follow a
+    well-defined form.</li>
+</ul>
+
+<p>These approaches fit somewhere in between the two approaches above.  They
+seem useful when you want to return a simple classification result,
+but it may get more challenging if you want to take more complex actions.</p>
+
+<h2>Using the framework</h2>
+
+<p>I'm not totally sure <em>exactly</em> how to use this framework yet, but it
+has been useful for me to ask these questions whenever someone says "we need a
+rules engine."  I hypothesize that if you want to keep the expression language
+simple, you'll need to invest more engineering-time to provide curated data to
+your rules engine and limit what it can do.</p>  
+
+<p>I also imagine that these approaches can be mixed-and-matched for maximum
+effectiveness. For example, you could have a rules engine which is based on a
+business readable DSL, and provide some tooling for non-engineers to create for
+common use-cases.  This allows for iteration speed in the common case without
+sacrificing power when you really need something complex.</p>
