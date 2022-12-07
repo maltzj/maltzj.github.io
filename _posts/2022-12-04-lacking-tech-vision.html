@@ -1,0 +1,101 @@
+--- layout: post title: When Should You Spend Time on Technical Vision ---
+
+<p>One of the challeging things about being a technical leader is knowing how
+much time to spend on big-picture vision setting vs. writing code and solving
+the problems of today.  Spend too much time on vision setting and you may start
+designing solutions which are disconnected from reality.  However, if you don't
+spend enough time on vision your team will sputter over the long-term.  Over the
+last couple of years I've found a few heuristics to apply which let you know
+when it's time to jump into "vision setting mode".</p>
+
+<h2>What's Technical Vision</h2>
+
+<p>Before digging into <em>when</em> you need to spend more time setting a
+technical vision, it's important to understand <em>what</em> a technical vision
+looks like.  A technical vision can take many forms, but it's most often an
+aspirational document (frequently ~2 -> 5 pages) which outlines an ideal future
+technical state that a team will achieve over the next 18+ months.  Technical
+visions are useful as an anchor point in the <a
+href="https://medium.com/@jamesacowling/stepping-stones-not-milestones-e6be0073563f">cone
+of strategy</a> to help tie-break day-to-day technical decisions.  They rarely
+end up being exactly correct, but they can also serve as a useful tool to
+                                                     elucidate any large gaps in
+                                                     what your team is currently
+                                                     building and help the team
+                                                     take a first step towards
+                                                     fixing those gaps.</p>
+
+<h2>What are The Signs You Need To Spend Time Clarifying Your Technnical
+Vision</h2>
+
+<p>All of those things seem great, so why not just spend all of your time on
+technical vision?  Unfortunately, creating one comes with a cost. The first cost
+is obvious: drafting and building consensus around a vision takes substantial
+amount of time from the author and reviewers to make sure the vision is
+directionally correct.  Vision documents <em>also</em> come with a cost for the
+team.  Once drafted, you actually need to get the team to shift course and use
+that vision in their day to day decision making.  While this is useful, it also
+takes time, and can lead to a feeling of whiplash if the team feels like they're
+changing their north star too frequently.  So, what are some cues you can use to
+know that it's time to pay this cost and draft a technical vision?</p>
+
+<h3>Case #1: When people are constantly disagreeing over small changes</h3>
+
+<p>One of the first signs that the team needs a clearer technical vision is if
+the team is constantly getting bogged down in small design decisions.  While
+some design push-and-pull is to be expected on code reviews and design
+documents, the team should spend most of their day-to-day time discussing
+questions on the margins rather than constantly re-litigating core questions
+about what you're building. </p>
+
+<p>If you start to see the team having these "re-litigate the world" discussion
+frequently, chances are there's a few key underlying architectural decisions
+which the team has not investigated and decided upon.  Drafting a technical
+vision can help bring these disagreements to the forefront and allow the team
+to come to a consensus about how to architect a solution to these problems.
+While the vision won't magically solve all design disagreements, having an
+agreed-upon north star should prevent the team from churning on the same design
+issues every code review.</p>
+
+<h3>Case #2: When team discussions become sprawling</h3>
+
+<p>Sometimes teams will encounter a situation where they can make design
+decisions effectively, but it feels like many decisions are time-consuming
+because they require "inventing the architecture as they go".  In these
+situations, the problem isn't so much disagreement so much as confusion about
+how all of the pieces of the system should fit together.  This means that simple questions
+like "how should we deploy this thing" becoming sprawling discussions without
+about "well how do we even <em>want to use</em> Jenkins here".  While some
+amount of this type of "zoom out" thinking is useful, if you find it's slowing
+down the team it may be time to invest in clarifying your technical vision.</p>
+
+<p>Resolving vision gaps in these cases is often slightly different than in Case
+#1, as there may not be any core disagreements to resolve.  Instead, it may just
+be a case of a team having differing expertise, and no one has yet stitched all
+of the moving pieces into a coherent narrative.  As a result, in these cases may
+have less disagreement-resolution, and more stitching-together disparate pieces
+of context into a coherent whole.</p>
+
+<h3>Case #3: When you've hit a local maximum</h3>
+
+<p>Sometimes it becomes clear that your current way of doing things just won't
+work.  Maybe you're constantly firefighting bugs in your infrastructure, or
+maybe your customer requests are becoming progressively harder to implement.
+Regardless of the symptoms, if your team is churning through problems as best it
+can, but it seems like you're stil falling behind, chances are you need to do a
+clarify your technical vision and chart a path to something fundamentally better.</p>
+
+<p>These types of technical vision can feel a little different than ones created
+for the other two cases.  They will still chart a course to a glorious future,
+but they also need to come with a concrete first step ("we will start
+on this vision by doing X to solve our immediate scalability needs") which helps
+the team out of its current situation.</p>
+
+
+<p>These three cases aren't the only times teams will need to
+clarify their technical vision, they do represent three common cases to look out
+for.  So, if you find yourself repeatedly bogged down in the same technical
+discussions, struggling to fit together a number of disparate design decisions
+into a coherent story, or just stuck in a technical rut, it's worth asking
+yourself "does our team have a clear enough vision about how to solve this
+problem" and filling that gap if not.</p>
