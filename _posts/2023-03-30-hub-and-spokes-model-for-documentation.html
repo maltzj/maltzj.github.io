@@ -1,0 +1,28 @@
+---
+layout: post
+title: A Hub and Spokes Model for Documentation on Large Projects 
+---
+
+<p>As projects grow it can be difficult to keep track of all of the
+documentation associated with them.  Between product requirements documents,
+design documents, meeting notes, and <a href="https://adr.github.io/">architecture decision
+    records</a> it can be easy to find yourself lost in a forest of Google
+Documents trying to find that one document which has the information you need.
+A while ago a friend told me about a simple model to manage this complexity on
+large projects, something he called "the hub and spokes" model of
+project documentation.</p>
+
+<h2>How's it work?</h2>
+
+<p>The basic idea of the hub-and-spokes model is simple: you create a central
+document (a hub) which serves as an entrypoint into the project.  Oftentimes
+this is some central "why are we doing this thing" document like a product
+requirements document or a project brief.  You then use that to link out to
+smaller documents (notes, decision logs, scoping documents) which describe a more focused
+topic.  Within the more focused document you include a backlink to the "hub" so
+that folks can walk up the stack.</p>
+
+<p>This approach isn't necceary in tools like Confluence which
+automatically create a documentation tree, but they take a little more
+discipline when you're just using a raw documents tool like Google Docs.</p>
+
