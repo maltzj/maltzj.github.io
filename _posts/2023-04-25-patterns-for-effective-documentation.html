@@ -1,0 +1,131 @@
+---
+layout: post
+title: Clarifying Document Intent in Written Cultures 
+---
+
+<p>When teams shifted to remote + hybrid work, they also needed to adopt a much
+greater emphasis on having a written culture.  On our team, this came with an
+additional problem: we ended up with so many documents it was hard for us to
+understand which ones were important/unimportant.  Shortly after that, we had a
+new manager joining our team and he gave us a few tools to manage this document
+explosion.</p>
+
+<h2>Tool #1: Clarify The purpose of the Document Via Emojis</h2>
+<p>The first challenge tackled was that documents take on many purposes.  Without any
+clear signal for “this is what this document is intended to do” it was hard for
+readers to differentiate “here’s a half-baked idea that I’d love 30% feedback
+on” from “this is a design document that we’re now implementing”.  To fix that,
+we created a simple emoji-based taxonomy for all of our documents. The system worked as follows.</p>
+
+<ul>
+    <li>A 💻 represented a design documents, and were assumed to express “here
+        is a thing I am planning to build”.</li>
+    <li>A 👀 represented a “validate my perspective” document.  These could be
+        anything from “Here’s a wild idea I had for a team process change” to “a
+        rough cut of what our next quarters OKRs should be before we go into
+        planning”.</li>
+    <li>A 🌅 represented a vision document.  These could either be technical
+        vision or product vision.  Either way, they were not assumed to
+        represent exactly what we were build, but directionally were we were
+        going.</li>
+    <li>A Gavel emoji represented a decision document and expressed “here is
+        some decision which needs to be made outside the scope of a design
+        document”.  It could be a technical decision (“how will we scale the foo
+        service”) or a team process decision (“how frequently will we hold
+        sprint planning”)</li>
+    <li>A 🗒️ emoji represented meeting notes</li>
+</ul>
+
+<p>Taken together, this simple taxonomy helped readers who stumbled across some
+random document clarify “how should I reason about this”.</p>
+
+<h2>Tool #2: Store All Documents of a Particular Type In a Folder</h2>
+
+<p>Once we had a taxonomy, we then created a simple system for organizing
+documents according to their type.  We started out by organizing according to
+type (all 👀 would go into one folder, 🌅 into another, etc.) but we found this
+to be a little overwhelming as time went on.  Instead we moved to a simple
+format where largeish projects would have their own folder where all documents
+lived (often with <a
+                          href="http://maltzj.com/posts/hub-and-spokes-model-for-documentation">a single
+                          “hub” document</a> as an anchor) while other documents
+                      (small design documents, unrelated "validate my
+                      perspective documents", etc.) would go into the shared
+folder.</p>
+
+<p>This proved to be very helpful because we found document search in most tools
+works ~75% of the time.  We often found ourselves knowing “oh yeah, I had a
+gavel document for that somewhere” or “I think someone wrote a vision document
+for that” but not knowing the exact search incantation to find it.  By having a
+simple folder structure to store documents we were able to save a lot of time
+hunting for documents.  This also played nicely with icons, as we could easily
+look at any document without a folder, look at its icon, and know where it
+needed to be moved to.</p>
+
+<h2>Tool #3: Clarify Status at the Top of Each Document</h2>
+
+<p>After those two changes, we adopted was having a simple “status” box at the top of each
+document.  This status box was a  one cell table which contained the
+author, the date the document was updated, and a status of the document (whether
+it was early draft, ready for review, or just some rough scribbles on a page).
+In practice it looked like this.</p>
+
+<table border="1px">
+    <tr>
+        <td>
+            <b>Author:</b> Maltz<br />
+            <b>Status:</b> Very early draft.  Believed to be directionally
+            correct, but not ready for feedback yet.<br />
+            <b>Last Updated:</b> Apr 25, 2023 <br />
+        </td>
+    </tr>
+</table>
+<br />
+
+
+<p>By clarifying when a document was ready for feedback and when it was last
+updated, readers could understand what level of feedback was appropriate for the
+current document status.  This helped us in a couple of concrete ways:</p>
+
+<ul>
+    <li>It prevented some classes of thrash where someone would write a spicy
+        “validate my perspective” document, share it with a couple of people,
+        and then forget about the document.  Someone would then find the
+        document 6 months later and get heartburn that some big change was
+        happening.</li>
+    <li>It prevented people from finding a design document that was 30% complete
+        and giving it fine-toothed-comb feedback even when it wasn’t ready for
+        that.</li>
+</ul>
+
+<p>In both of these cases, the presence of a simple “status” box helped readers
+contextualize “how much should I care about this” and “how should I engage with
+this document”.</p>
+
+<p>In practice we didn’t enforce a strict policy on keeping these fields up to
+date, but documents which tended towards adoption would get the fields updated
+naturally just through sheer number of eyeballs.</p>
+
+<h2>Tool #4: Clarify expected approvers when necessary</h2>
+
+<p>Once we had this taxonomy, we encountered one other problem: for documents
+which were trying to drive towards a “decision” (i.e. Gavel documents or design
+documents) it would be unclear who was responsible for actually saying “this
+decision has been made”.  We solved that by adding a small section at the top
+called the “Gavel Block”.  This was a simple list of people who needed to
+approve and could check-off their names or add blocking feedback.</p>
+
+<p>This practice was again simple but very helpful for clarifying the <a
+                                                                              href="https://project-management.com/understanding-responsibility-assignment-matrix-raci-matrix/">RACI
+                                                                              Matrix</a> around a particular document.  If your name wasn’t on the gavel block,
+you didn’t have to review.  Similarly, if you came through with feedback and
+wasn’t on the gavel block, then the author could easily clarify “do you want to
+be on the gavel block” or “is this non-blocking feedback”.</p>
+
+
+<p>These tools didn’t solve all of our challenges related to having a heavily
+written culture, but they did help our team operate substantially more
+effectively.  Plus, they were lightweight and easy to adopt.  If your team is
+struggling to sift through a pile of documents they’re probably worth a try for
+you as well.</p>
+
