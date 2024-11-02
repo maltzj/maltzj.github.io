@@ -1,0 +1,436 @@
+---
+layout: post
+title: Flashcard prep 
+---
+
+<div>This is a little flashcard game I made to help my wife prep for the USCIS citizenship test.</div>
+
+<h2>The game</h2>
+<div id="question-div"><span><b>Question:  </b></span> <span id="question"></span></div>
+<br />
+<div id="answer-div"><span><b>Answer:  </b></span><br /><div id="answer"></div></div>
+
+<button id="regenerate-question">Next Question</button>
+
+<button id="show-answer"> Show answer</button>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    var questionsAndAnswers = [
+        {
+            'question': 'What is the Supreme law of the land?',
+            'answer': 'The constitution'
+        },
+        {
+            'question': 'What does the Constiution do?',
+            'answer': "Sets up the government<br />Defines the government<br />Protects the basic rights of Americans"
+        },
+        {
+            'question': 'The idea of self-government is in the first three words of the Constitution. What are these words?',
+            'answer': 'We the People'
+        },
+        {
+            'question': 'What is an amendment?',
+            'answer': "A change (to the Constitution)<br />An addition (to the Constitution)"
+        },
+        {
+            'question': 'What is one right or freedom from the First Amendment?',
+            'answer': "Speech<br />Religion<br />Assembly<br />Press<br />Petition the government"
+        },
+        {
+            'question': 'How many amendments does the Constitution have?',
+            'answer': "Twenty-seven (27)"
+        },
+        {
+            'question': 'What did the Declaration of Independence do?',
+            'answer': "Announced our independence (from Great Britain)<br />Declared our independence (from Great Britain)<br />Said that the United States is free (from Great Britain)"
+        },
+        {
+            'question': 'What are two rights in the Declaration of Independence?',
+            'answer': "Life<br />Liberty<br />Pursuit of happiness"
+        },
+        {
+            'question': 'What is freedom of religion?',
+            'answer': "You can practice any religion, or not practice a religion."
+        },
+        {
+            'question': 'What is freedom of religion?',
+            'answer': "You can practice any religion, or not practice a religion."
+        },
+        {
+            'question': 'What is the economic system in the United States?',
+            'answer': "Capitalist economy<br />Market economy"
+        },
+        {
+            'question': 'What is the \“rule of law\"?',
+            'answer': "Everyone must follow the law.<br />Leaders must obey the law.<br />Government must obey the law.<br />No one is above the law."
+        },
+        {
+            "question": "Name one branch or part of the government.*",
+            "answer": "Congress<br />Legislative<br />President<br />Executive<br />The courts<br />Judicial"
+        },
+        {
+            "question": "What stops one branch of government from becoming too powerful?",
+            "answer": "Checks and balances<br />Separation of powers"
+        },
+        {
+            "question": "Who is in charge of the executive branch?",
+            "answer": "The President"
+        },
+        {
+            "question": "Who makes federal laws?",
+            "answer": "Congress<br />Senate and House (of Representatives)<br />(U.S. or national) legislature"
+        },
+        {
+            "question": "What are the two parts of the U.S. Congress?*",
+            "answer": "The Senate and House (of Representatives)"
+        },
+        {
+            "question": "How many U.S. Senators are there?",
+            "answer": "One hundred (100)"
+        },
+        {
+            "question": "We elect a U.S. Senator for how many years?",
+            "answer": "Six (6)"
+        },
+        {
+            "question": "Who is one of your state’s U.S. Senators now?*",
+            "answer": "Chuck Schumer<br />Kristen Gillibrand"
+        },
+        {
+            "question": "The House of Representatives has how many voting members?",
+            "answer": "Four hundred thirty-five (435)"
+        },
+        {
+            "question": "We elect a U.S. Representative for how many years?",
+            "answer": "Two (2)"
+        },
+        {
+            "question": "Name your U.S. Representative.",
+            "answer": "Antonio Espaillat (for > 110th st)<br>Jerry Nadler (if on UWS)"
+        },
+        {
+            "question": "Who does a U.S. Senator represent?",
+            "answer": "All people of the state"
+        },
+        {
+            "question": "Why do some states have more Representatives than other states?",
+            "answer": "(because of) The state’s population<br />(because) They have more people<br />(because) Some states have more people"
+        },
+        {
+            "question": "We elect a President for how many years?",
+            "answer": "Four (4)"
+        },
+        {
+            "question": "In what month do we vote for President?*",
+            "answer": "November"
+        },
+        {
+            "question": "What is the name of the President of the United States now?*",
+            "answer": "Joe Biden"
+        },
+        {
+            "question": "What is the name of the Vice President of the United States now?",
+            "answer": "Kamala Harris"
+        },
+        {
+            "question": "If the President can no longer serve, who becomes President?",
+            "answer": "The Vice President"
+        },
+        {
+            "question": "If both the President and the Vice President can no longer serve, who becomes President?",
+            "answer": "The Speaker of the House"
+        },
+        {
+            "question": "Who is the Commander in Chief of the military?",
+            "answer": "The President"
+        },
+        {
+            "question": "Who signs bills to become laws?",
+            "answer": "The President"
+        },
+        {
+            "question": "Who vetoes bills?",
+            "answer": "The President"
+        },
+        {
+            "question": "What does the President’s Cabinet do?",
+            "answer": "Advises the President"
+        },
+        {
+            "question": "What are two Cabinet-level positions?",
+            "answer": "Secretary of Agriculture<br />Secretary of Commerce<br />Secretary of Defense<br />Secretary of Education<br />Secretary of Energy<br />Secretary of Health and Human Services<br />Secretary of Homeland Security<br />Secretary of Housing and Urban Development<br />Secretary of the Interior<br />Secretary of Labor<br />Secretary of State<br />Secretary of Transportation<br />Secretary of the Treasury<br />Secretary of Veterans Affairs<br />Attorney General<br />Vice President"
+        },
+        {
+            "question": "What does the judicial branch do?",
+            "answer": "Reviews laws<br />Explains laws<br />Resolves disputes (disagreements)<br />Decides if a law goes against the Constitution"
+        },
+        {
+            "question": "What is the highest court in the United States?",
+            "answer": "The Supreme Court"
+        },
+        {
+            "question": "How many justices are on the Supreme Court?",
+            "answer": "Nine (9)"
+        },
+        {
+            "question": "Who is the Chief Justice of the United States now?",
+            "answer": "John Roberts"
+        },
+        {
+            "question": "Under our Constitution, some powers belong to the federal government. What is one power of the federal government?",
+            "answer": "To print money<br>To declare war<br>To create an army<br>To make treaties"
+        },
+        {
+            "question": "Under our Constitution, some powers belong to the states. What is one power of the states?",
+            "answer": "Provide schooling and education<br>Provide protection (police)<br>Provide safety (fire departments)<br>Give a driver's license<br>Approve zoning and land use"
+        },
+        {
+            "question": "Who is the Governor of your state now?",
+            "answer": "Kathy Hochul"
+        },
+        {
+            "question": "What is the capital of your state?",
+            "answer": "Albany"
+        },
+        {
+            "question": "What are the two major political parties in the United States?",
+            "answer": "Democratic and Republican"
+        },
+        {
+            "question": "What is the political party of the President now?",
+            "answer": "Democrat"
+        },
+        {
+            "question": "What is the name of the Speaker of the House of Representatives now?",
+            "answer": "Mike Johnson"
+        },
+        {
+            "question": "There are four amendments to the Constitution about who can vote. Describe one of them.",
+            "answer": "Citizens eighteen (18) and older (can vote).<br>You don't have to pay (a poll tax) to vote.<br>Any citizen can vote. (Women and men can vote.)<br>A male citizen of any race (can vote)."
+        },
+        {
+            "question": "What is one responsibility that is only for United States citizens?",
+            "answer": "Serve on a jury<br>Vote in a federal election"
+        },
+        {
+            "question": "Name one right only for United States citizens.",
+            "answer": "Vote in a federal election<br>Run for federal office"
+        },
+        {
+            "question": "What are two rights of everyone living in the United States?",
+            "answer": "Freedom of expression<br>Freedom of speech<br>Freedom of assembly<br>Freedom to petition the government<br>Freedom of religion<br>The right to bear arms"
+        },
+        {
+            "question": "What do we show loyalty to when we say the Pledge of Allegiance?",
+            "answer": "The United States<br>The flag"
+        },
+        {
+            "question": "What is one promise you make when you become a United States citizen?",
+            "answer": "Give up loyalty to other countries<br>Defend the Constitution and laws of the United States<br>Obey the laws of the United States<br>Serve in the U.S. military (if needed)<br>Serve (do important work for) the nation (if needed)<br>Be loyal to the United States"
+        },
+        {
+            "question": "How old do citizens have to be to vote for President?",
+            "answer": "Eighteen (18) and older"
+        },
+        {
+            "question": "What are two ways that Americans can participate in their democracy?",
+            "answer": "Vote<br>Join a political party<br>Help with a campaign<br>Join a civic group<br>Join a community group<br>Give an elected official your opinion on an issue<br>Call Senators and Representatives<br>Publicly support or oppose an issue or policy<br>Run for office<br>Write to a newspaper"
+        },
+        {
+            "question": "When is the last day you can send in federal income tax forms?*",
+            "answer": "April 15"
+        },
+        {
+            "question": "When must all men register for the Selective Service?",
+            "answer": "At age eighteen (18)<br>Between eighteen (18) and twenty-six (26)"
+        },
+        {
+            "question": "What is one reason colonists came to America?",
+            "answer": "Freedom<br>Political liberty<br>Religious freedom<br>Economic opportunity<br>Practice their religion<br>Escape persecution"
+        },
+        {
+            "question": "Who lived in America before the Europeans arrived?",
+            "answer": "American Indians<br>Native Americans"
+        },
+        {
+            "question": "What group of people was taken to America and sold as slaves?",
+            "answer": "Africans<br>People from Africa"
+        },
+        {
+            "question": "Why did the colonists fight the British?",
+            "answer": "Because of high taxes (taxation without representation)<br>Because the British army stayed in their houses (boarding, quartering)<br>Because they didn't have self-government"
+        },
+        {
+            "question": "Who wrote the Declaration of Independence?",
+            "answer": "(Thomas) Jefferson"
+        },
+        {
+            "question": "When was the Declaration of Independence adopted?",
+            "answer": "July 4, 1776"
+        },
+        {
+            "question": "There were 13 original states. Name three.",
+            "answer": "New Hampshire<br>Massachusetts<br>Rhode Island<br>Connecticut<br>New York<br>New Jersey<br>Pennsylvania<br>Delaware<br>Maryland<br>Virginia<br>North Carolina<br>South Carolina<br>Georgia"
+        },
+        {
+            "question": "What happened at the Constitutional Convention?",
+            "answer": "The Constitution was written.<br>The Founding Fathers wrote the Constitution."
+        },
+        {
+            "question": "When was the Constitution written?",
+            "answer": "1787"
+        },
+        {
+            "question": "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.",
+            "answer": "(James) Madison<br>(Alexander) Hamilton<br>(John) Jay<br>Publius"
+        },
+        { 
+            "question": "What is one thing Benjamin Franklin is famous for?",
+            "answer": "U.S. diplomat<br>Oldest member of the Constitutional Convention<br>First Postmaster General of the United States<br>writer of \"Poor Richard's Almanac\"<br>Started the first free libraries" 
+        },
+        { 
+            "question": "Who is the \"Father of Our Country\"?", 
+            "answer": "(George) Washington" 
+        },
+        {
+            "question": "Who was the first President?",
+            "answer": "(George) Washington"
+        },
+        {
+            "question": "What territory did the United States buy from France in 1803?",
+            "answer": "The Louisiana Territory<br>Louisiana"
+        },
+        {
+            "question": "Name one war fought by the United States in the 1800s.",
+            "answer": "War of 1812<br>Mexican-American War<br>Civil War<br>Spanish-American War"
+        },
+        {
+            "question": "Name the U.S. war between the North and the South.",
+            "answer": "The Civil War<br>the War between the States"
+        },
+        {
+            "question": "Name one problem that led to the Civil War.",
+            "answer": "Slavery<br>Economic reasons<br>States' rights"
+        },
+        {
+            "question": "What was one important thing that Abraham Lincoln did?",
+            "answer": "Freed the slaves (Emancipation Proclamation)<br>Saved (or preserved) the Union<br>Led the United States during the Civil War"
+        },
+        {
+            "question": "What did the Emancipation Proclamation do?",
+            "answer": "Freed the slaves<br>Freed slaves in the Confederacy<br>Freed slaves in the Confederate states<br>Freed slaves in most Southern states"
+        },
+        {
+            "question": "What did Susan B. Anthony do?",
+            "answer": "Fought for women's rights<br>Fought for civil rights"
+        },
+        {
+            "question": "Name one war fought by the United States in the 1900s.",
+            "answer": "World War I<br>World War II<br>Korean War<br>Vietnam War<br>(Persian) Gulf War"
+        },
+        {
+            "question": "Who was President during World War I?",
+            "answer": "(Woodrow) Wilson"
+        },
+        {
+            "question": "Who was President during the Great Depression and World War II?",
+            "answer": "(Franklin) Roosevelt"
+        },
+        {
+            "question": "Who did the United States fight in World War II?",
+            "answer": "Japan, Germany, and Italy"
+        },
+        {
+            "question": "Before he was President, Eisenhower was a general. What war was he in?",
+            "answer": "World War II"
+        },
+        {
+            "question": "During the Cold War, what was the main concern of the United States?",
+            "answer": "Communism"
+        },
+        {
+            "question": "What movement tried to end racial discrimination?",
+            "answer": "Civil rights (movement)"
+        },
+        {
+            "question": "What did Martin Luther King, Jr. do?",
+            "answer": "Fought for civil rights<br>Worked for equality for all Americans"
+        },
+        {
+            "question": "What major event happened on September 11, 2001, in the United States?",
+            "answer": "Terrorists attacked the United States."
+        },
+        {
+            "question": "Name one American Indian tribe in the United States.",
+            "answer": "Cherokee<br>Navajo<br>Sioux<br>Chippewa<br>Choctaw<br>Pueblo<br>Apache<br>Iroquois<br>Creek<br>Blackfeet<br>Seminole<br>Cheyenne<br>Arawak<br>Shawnee<br>Mohegan<br>Huron<br>Oneida<br>Lakota<br>Crow<br>Teton<br>Hopi<br>Inuit"
+        },
+        {
+            "question": "Name one of the two longest rivers in the United States.",
+            "answer": "Missouri (River)<br>Mississippi (River)"
+        },
+        {
+            "question": "What ocean is on the West Coast of the United States?",
+            "answer": "Pacific (Ocean)"
+        },
+        {
+            "question": "What ocean is on the East Coast of the United States?",
+            "answer": "Atlantic (Ocean)"
+        },
+        {
+            "question": "Name one U.S. territory.",
+            "answer": "Puerto Rico<br>U.S. Virgin Islands<br>American Samoa<br>Northern Mariana Islands<br>Guam"
+        },
+        {
+            "question": "Name one state that borders Canada.",
+            "answer": "Maine<br>New Hampshire<br>Vermont<br>New York<br>Pennsylvania<br>Ohio<br>Michigan<br>Minnesota<br>North Dakota<br>Montana<br>Idaho<br>Washington<br>Alaska"
+        },
+        {
+            "question": "Name one state that borders Mexico.",
+            "answer": "California<br>Arizona<br>New Mexico<br>Texas"
+        },
+        {
+            "question": "What is the capital of the United States?",
+            "answer": "Washington, D.C."
+        },
+        {
+            "question": "Where is the Statue of Liberty?",
+            "answer": "New York (Harbor)<br>Liberty Island<br>[Also acceptable are New Jersey, near New York City, and on the Hudson (River).]"
+        },
+        {
+            "question": "Why does the flag have 13 stripes?",
+            "answer": "Because there were 13 original colonies<br>Because the stripes represent the original colonies"
+        },
+        {
+            "question": "Why does the flag have 50 stars?",
+            "answer": "Because there is one star for each state<br>Because each star represents a state<br>Because there are 50 states"
+        },
+        {
+            "question": "What is the name of the national anthem?",
+            "answer": "The Star-Spangled Banner"
+        },
+        {
+            "question": "When do we celebrate Independence Day?",
+            "answer": "July 4"
+        },
+        {
+            "question": "Name two national U.S. holidays.",
+            "answer": "New Year's Day<br>Martin Luther King, Jr. Day<br>Presidents' Day<br>Memorial Day<br>Juneteenth<br>Independence Day<br>Labor Day<br>Columbus Day<br>Veterans Day<br>Thanksgiving<br>Christmas"
+        }
+    ]
+
+    $(document).ready(function() {    
+        console.log("running this thing?")
+        $("#regenerate-question").click(function() {
+            var randomIndex = Math.floor(Math.random() * questionsAndAnswers.length);
+            console.log("RandomIndex is ", randomIndex);
+            $("#question").text(questionsAndAnswers[randomIndex]['question'])
+            $("#answer").hide();
+            $("#answer").html(questionsAndAnswers[randomIndex]['answer'])
+        });
+
+        $("#show-answer").click(function(){
+            $("#answer").show();
+        })
+    });
+</script>
